@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /
-
-# This website is owned by LuxeGlow
-# Developed by dacso.uk
-# Contact: info@dacso.uk
