@@ -80,9 +80,9 @@ try {
   console.log('Dist directory already clean or does not exist');
 }
 
-// Copy files from LuxeGlow-Bilingual-New directory (primary template)
-console.log('Copying files from LuxeGlow-Bilingual-New directory...');
-const srcDir = 'LuxeGlow-Bilingual-New';
+// Copy files from root directory (files are now at root)
+console.log('Copying files from root directory...');
+const srcDir = '.';
 const files = getAllFiles(srcDir);
 
 let copied = 0;

@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /
-
-# This is a demo website owned by dacsoapp.com
-# For presentation purposes only
-# Contact: info@dacsoapp.com
