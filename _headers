@@ -1,0 +1,4 @@
+# Apply to all paths
+/*
+  Content-Security-Policy: frame-ancestors 'self' https://your-portfolio.example https://*.your-company.com
+

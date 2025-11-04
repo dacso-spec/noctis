@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    ========================================
+    COPYRIGHT AND LICENSING INFORMATION
+    ========================================
+    
+    © 2024 LuxeGlow E-commerce Website
+    Developed by: dacso.uk
+    Website: www.dacso.uk
+    
+    IMPORTANT LEGAL NOTICE:
+    This website and all its content, design, code, and functionality are proprietary and protected by copyright.
+    
+    PERMITTED USE:
+    - Viewing and browsing the website
+    - Making purchases through the e-commerce platform
+    - Educational reference (with proper attribution)
+    
+    PROHIBITED USE:
+    - Commercial reproduction or distribution
+    - Copying code, design, or content without explicit permission
+    - Using as a template for commercial projects
+    - Reselling or redistributing in any form
+    
+    For licensing inquiries or commercial use permissions, contact:
+    Email: info@dacso.uk
+    Website: www.dacso.uk
+    
+    This notice must remain intact in all copies and derivatives.
+    ========================================
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' https://your-portfolio.example https://*.your-company.com">
+    <title>Contact Us - Noctis Clean Skincare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fallback Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous">
+    <style>
+        /* Noctis Brand Colors */
+        :root {
+            --noctis-bronze: #8A652F;
+            --noctis-bronze-light: #A67C3A;
+            --noctis-bronze-dark: #6B4F1F;
+        }
+        
+        /* Typography */
+        .font-lora { font-family: 'Lora', serif; }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        
+        /* Replace existing luxe-amber with noctis-bronze */
+        .text-luxe-amber { color: var(--noctis-bronze) !important; }
+        .bg-luxe-amber { background-color: var(--noctis-bronze) !important; }
+        .border-luxe-amber { border-color: var(--noctis-bronze) !important; }
+        .hover\:text-luxe-amber:hover { color: var(--noctis-bronze) !important; }
+        .hover\:bg-luxe-amber:hover { background-color: var(--noctis-bronze) !important; }
+        .hover\:border-luxe-amber:hover { border-color: var(--noctis-bronze) !important; }
+        
+        /* Headlines should use Lora */
+        h1, h2, h3, h4, h5, h6 { font-family: 'Lora', serif; }
+        
+        /* Body text should use Montserrat */
+        body, p, span, div { font-family: 'Montserrat', sans-serif; }
+    </style>
+<style>
+        body { font-family: 'Montserrat', sans-serif; }
+        
+        /* Notification styles */
+        .notification { display: none; }
+        .notification.show { display: block; transform: translateX(0); transition: transform 0.3s ease; }
+        
+        .cart-badge { animation: pulse 0.5s ease-in-out; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .fade-in { animation: fadeIn 0.8s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .form-input:focus { border-color: #92400e; box-shadow: 0 0 0 3px rgba(146, 64, 14, 0.1); }
+        .contact-card { transition: all 0.3s ease; }
+        .contact-card:hover { transform: translateY(-5px); }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* Touch-friendly button sizes */
+            button, .btn, a[role="button"] {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            /* Prevent zoom on iOS form inputs */
+            input, select, textarea {
+                font-size: 16px;
+            }
+            
+            /* Mobile cart sidebar improvements */
+            #cart-sidebar, #wishlist-sidebar {
+                width: 100vw;
+                max-width: 100vw;
+            }
+            
+            /* Mobile hero section */
+            .hero-bg {
+                padding: 2rem 0;
+            }
+            
+            /* Mobile product cards */
+            .product-hover {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+            
+            /* Mobile typography scaling */
+            .heading-xl {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .heading-lg {
+                font-size: 1.5rem;
+                line-height: 1.3;
+            }
+            
+            .heading-md {
+                font-size: 1.25rem;
+                line-height: 1.4;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .heading-xl {
+                font-size: 1.75rem;
+            }
+            
+            .heading-lg {
+                font-size: 1.375rem;
+            }
+            
+            .heading-md {
+                font-size: 1.125rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+    
+    <!-- Promo Banner -->
+    <div id="promo-banner" class="bg-luxe-amber text-white text-center py-2 text-sm font-medium relative">
+        <span>✨ Free Shipping on Orders Above $100</span>
+        <button onclick="closePromoBanner()" class="absolute right-4 top-1/2 transform -translate-y-1/2 hover:bg-white/20 rounded-full p-1">
+            <i class="fas fa-times text-xs"></i>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="NOCTIS.png" alt="NOCTIS" data-critical="true" class="h-16 w-auto">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-luxe-stone hover:text-luxe-amber transition-all duration-300 px-3 py-2 rounded-lg hover:bg-luxe-amber/10 hover:scale-105">Home</a>
+                    <a href="shop.html" class="text-luxe-stone hover:text-luxe-amber transition-all duration-300 px-3 py-2 rounded-lg hover:bg-luxe-amber/10 hover:scale-105">Shop</a>
+                    <a href="about.html" class="text-luxe-stone hover:text-luxe-amber transition-all duration-300 px-3 py-2 rounded-lg hover:bg-luxe-amber/10 hover:scale-105">About</a>
+                    <a href="contact.html" class="text-luxe-stone px-3 py-2 rounded-lg hover:bg-luxe-amber/10 hover:scale-105">Contact</a>
+                </div>
+                <!-- Mobile Header Buttons -->
+                <div class="flex items-center space-x-0 md:hidden">
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="text-luxe-stone hover:text-luxe-amber transition-colors !pl-0 !ml-0">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                    
+                    <!-- Search -->
+                    <div class="relative">
+                        <button onclick="toggleSearch()" class="text-luxe-stone hover:text-luxe-amber transition-colors !pl-0 !ml-0">
+                            <i class="fas fa-search text-lg"></i>
+                        </button>
+                        <div id="search-overlay" class="fixed inset-0 bg-black/50 z-50 hidden search-overlay">
+                            <div class="flex items-center justify-center min-h-screen p-4">
+                                <div class="bg-white rounded-xl p-6 w-full max-w-2xl">
+                                    <div class="flex items-center space-x-4">
+                                        <input type="text" id="search-input" placeholder="Search products..." 
+                                               class="flex-1 px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-luxe-amber focus:outline-none"
+                                               onkeyup="searchProducts(event)">
+                                        <button onclick="toggleSearch()" class="text-stone-400 hover:text-stone-600">
+                                            <i class="fas fa-times text-xl"></i>
+                                        </button>
+                                    </div>
+                                    <div id="search-results" class="mt-4 max-h-64 overflow-y-auto">
+                                        <!-- Search results will appear here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Wishlist -->
+                    <button class="text-luxe-stone hover:text-luxe-amber transition-colors relative pl-0" onclick="toggleWishlist()">
+                        <i class="fas fa-heart text-lg wishlist-icon"></i>
+                        <span data-badge="wishlist" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center cart-badge hidden" aria-live="polite">0</span>
+                    </button>
+
+                    <!-- Cart -->
+                    <button class="text-luxe-stone hover:text-luxe-amber transition-colors relative pl-0" onclick="toggleCart()">
+                        <i class="fas fa-shopping-bag text-lg"></i>
+                        <span data-badge="cart" class="absolute -top-2 -right-2 bg-luxe-amber text-white text-xs rounded-full h-5 w-5 flex items-center justify-center cart-badge hidden" aria-live="polite">0</span>
+                    </button>
+                </div>
+                
+                <!-- Desktop Header Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Search -->
+                    <div class="relative">
+                        <button onclick="toggleSearch()" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                            <i class="fas fa-search text-lg"></i>
+                        </button>
+                        <div id="search-overlay" class="fixed inset-0 bg-black/50 z-50 hidden search-overlay">
+                            <div class="flex items-center justify-center min-h-screen p-4">
+                                <div class="bg-white rounded-xl p-6 w-full max-w-2xl">
+                                    <div class="flex items-center space-x-4">
+                                        <input type="text" id="search-input" placeholder="Search products..." 
+                                               class="flex-1 px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-luxe-amber focus:outline-none"
+                                               onkeyup="searchProducts(event)">
+                                        <button onclick="toggleSearch()" class="text-stone-400 hover:text-stone-600">
+                                            <i class="fas fa-times text-xl"></i>
+                                        </button>
+                                    </div>
+                                    <div id="search-results" class="mt-4 max-h-64 overflow-y-auto">
+                                        <!-- Search results will appear here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Wishlist -->
+                    <button class="text-luxe-stone hover:text-luxe-amber transition-colors relative" onclick="toggleWishlist()">
+                        <i class="fas fa-heart text-lg wishlist-icon"></i>
+                        <span data-badge="wishlist" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center cart-badge hidden" aria-live="polite">0</span>
+                    </button>
+
+                    <!-- Cart -->
+                    <button class="text-luxe-stone hover:text-luxe-amber transition-colors relative" onclick="toggleCart()">
+                        <i class="fas fa-shopping-bag text-lg"></i>
+                        <span data-badge="cart" class="absolute -top-2 -right-2 bg-luxe-amber text-white text-xs rounded-full h-5 w-5 flex items-center justify-center cart-badge hidden" aria-live="polite">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-50 transform -translate-x-full transition-transform duration-300 md:hidden">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-luxe-amber">Menu</h2>
+                <button id="mobile-menu-close" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <nav class="space-y-6">
+                <a href="index.html" class="block text-xl font-semibold text-luxe-stone hover:text-luxe-amber transition-colors">Home</a>
+                <a href="shop.html" class="block text-xl font-semibold text-luxe-stone hover:text-luxe-amber transition-colors">Shop</a>
+                <a href="about.html" class="block text-xl font-semibold text-luxe-stone hover:text-luxe-amber transition-colors">About</a>
+                <a href="contact.html" class="block text-xl font-semibold text-luxe-stone hover:text-luxe-amber transition-colors">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="py-16 bg-gradient-to-br from-amber-50 to-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-luxe-stone mb-6 fade-in font-lora">
+                Get in
+                <span class="text-luxe-amber">Touch</span>
+            </h1>
+            <p class="text-xl text-stone-600 max-w-3xl mx-auto fade-in">
+                We're here to help, from our home in Portland to yours. Whether you have a question about our ingredients or need help with an order, our team is ready.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Methods -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="contact-card bg-white rounded-xl shadow-lg p-8 text-center">
+                    <div class="w-16 h-16 bg-luxe-amber rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-phone text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Call Us</h3>
+                    <p class="text-stone-600 mb-4">Speak with our customer support team</p>
+                    <a href="tel:+15035550145" class="text-luxe-amber font-semibold text-lg">+1 (503) 555-0145</a>
+                    <p class="text-sm text-stone-500 mt-2">Mon-Fri: 9AM-6PM PST</p>
+                </div>
+                
+                <div class="contact-card bg-white rounded-xl shadow-lg p-8 text-center">
+                    <div class="w-16 h-16 bg-luxe-amber rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-envelope text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Email Us</h3>
+                    <p class="text-stone-600 mb-4">Send us your questions or feedback</p>
+                    <a href="mailto:hello@noctisbeauty.com" class="text-luxe-amber font-semibold text-lg">hello@noctisbeauty.com</a>
+                    <p class="text-sm text-stone-500 mt-2">For customer support & orders</p>
+                </div>
+                
+                <div class="contact-card bg-white rounded-xl shadow-lg p-8 text-center">
+                    <div class="w-16 h-16 bg-luxe-amber rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-comments text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Live Chat</h3>
+                    <p class="text-stone-600 mb-4">Chat with us instantly</p>
+                    <button onclick="openLiveChat()" class="text-luxe-amber font-semibold text-lg">Start Chat</button>
+                    <p class="text-sm text-stone-500 mt-2">Coming Soon - Available 24/7</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Map -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="fade-in">
+                    <h2 class="text-3xl font-bold text-luxe-stone mb-8">Send us a Message</h2>
+                    <form id="contact-form" onsubmit="submitContactForm(event)" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-stone-700 mb-2">First Name *</label>
+                                <input type="text" required class="form-input w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none" placeholder="Enter your first name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-stone-700 mb-2">Last Name *</label>
+                                <input type="text" required class="form-input w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none" placeholder="Enter your last name">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-stone-700 mb-2">Email Address *</label>
+                            <input type="email" required class="form-input w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none" placeholder="your.email@example.com">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-stone-700 mb-2">Phone Number</label>
+                            <input type="tel" class="form-input w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none" placeholder="+44 20 7123 4567">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-stone-700 mb-2">Subject *</label>
+                            <select required class="form-input w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none">
+                                <option value="">Select a subject</option>
+                                <option value="product-inquiry">Product Inquiry</option>
+                                <option value="order-support">Order Support</option>
+                                <option value="skincare-advice">Skincare Advice</option>
+                                <option value="returns">Returns & Exchanges</option>
+                                <option value="wholesale">Wholesale Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-stone-700 mb-2">Message *</label>
+                            <textarea required rows="6" class="form-input w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none resize-none" placeholder="Tell us how we can help you..."></textarea>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="checkbox" id="newsletter" class="mr-3">
+                            <label for="newsletter" class="text-sm text-stone-600">
+                                I'd like to receive skincare tips and exclusive offers via email
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-luxe-amber text-white py-4 rounded-lg font-semibold text-lg hover:bg-amber-900 transition-colors">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Map & Office Info -->
+                <section class="py-16">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl font-bold text-luxe-stone mb-4 font-lora">Visit Our Apothecary</h2>
+                            <p class="text-xl text-stone-600">Located in the heart of Portland's Pearl District</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.1234567890!2d-122.6784!3d45.5234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950a0b0b0b0b0b%3A0x0b0b0b0b0b0b0b0b!2s1212%20NW%2011th%20Ave%2C%20Portland%2C%20OR%2097209!5e0!3m2!1sen!2sus!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-stone-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 id="faq" class="text-3xl font-bold text-luxe-stone mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-stone-600">Quick answers to common questions</p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">What's your return policy?</h3>
+                    <p class="text-stone-600">
+                        We offer a 30-day return policy for unopened products in their original packaging. 
+                        Returns are free and we'll process your refund within 5-7 business days.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">How long does shipping take?</h3>
+                    <p class="text-stone-600">
+                        Standard delivery takes 3-5 business days within the US. We offer express delivery 
+                        (1-2 days) and next-day delivery options. Free shipping is available on orders over $100.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">Are your products suitable for sensitive skin?</h3>
+                    <p class="text-stone-600">
+                        Yes! All our products are formulated with sensitive skin in mind. We use gentle, 
+                        natural ingredients and avoid harsh chemicals. However, we recommend doing a patch 
+                        test before first use.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">Do you offer skincare consultations?</h3>
+                    <p class="text-stone-600">
+                        Absolutely! Our skincare experts are available for free consultations via phone, 
+                        email, or live chat. We can help you create a personalized skincare routine based 
+                        on your skin type and concerns.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="py-16 bg-luxe-stone">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Stay Connected</h2>
+            <p class="text-stone-300 mb-8">Get the latest skincare tips, product launches, and exclusive offers</p>
+            <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" onsubmit="subscribeNewsletter(event)">
+                <input type="email" 
+                       placeholder="Enter your email" 
+                       class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-luxe-amber focus:outline-none"
+                       required>
+                <button type="submit" 
+                        class="bg-luxe-amber text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-900 transition-colors">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Newsletter Success Popup -->
+    <div id="newsletter-popup" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0" id="popup-content">
+            <div class="p-8 text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-check text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-luxe-stone mb-4 font-lora">Welcome to Noctis!</h3>
+                <p class="text-stone-600 mb-6">Thank you for subscribing to our newsletter. You'll receive exclusive skincare tips, product launches, and special offers.</p>
+                <button onclick="closeNewsletterPopup()" class="bg-luxe-amber text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-900 transition-colors">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-luxe-amber mb-4">Noctis</h3>
+                    <p class="text-stone-600 mb-4">Premium skincare for radiant, healthy skin. Crafted with love and the finest ingredients.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="shop.html" class="text-stone-600 hover:text-luxe-amber transition-colors">Shop</a></li>
+                        <li><a href="about.html" class="text-stone-600 hover:text-luxe-amber transition-colors">About</a></li>
+                        <li><a href="contact.html" class="text-luxe-amber font-semibold">Contact</a></li>
+                        <li><a href="shipping.html" class="text-stone-600 hover:text-luxe-amber transition-colors">Shipping</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Customer Care</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html#faq" class="text-luxe-amber font-semibold">FAQ</a></li>
+                        <li><a href="returns.html" class="text-stone-600 hover:text-luxe-amber transition-colors">Returns</a></li>
+                        <li><a href="track-order.html" class="text-stone-600 hover:text-luxe-amber transition-colors">Track Order</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-stone-600">
+                        <li>Email: hello@noctisbeauty.com</li>
+                        <li>Phone: +1 (503) 555-0145</li>
+                        <li>Address: 1212 NW 11th Ave, Suite 200, Portland, OR 97209</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Payment Methods -->
+            <div class="border-t border-stone-200 mt-8 pt-8">
+                <div class="text-center mb-6">
+                    <h4 class="text-sm font-semibold text-stone-700 mb-4">We Accept</h4>
+                    <div class="flex justify-center items-center space-x-6">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="h-6 w-auto">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="h-6 w-auto">
+                        <img src="https://1000logos.net/wp-content/uploads/2016/10/American-Express-Color.png" alt="Amex" class="h-6 w-auto">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="h-6 w-auto">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" class="h-6 w-auto">
+                        </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-stone-200 pt-8 text-center text-stone-600">
+                <p>&copy; 2024 Noctis Beauty. All rights reserved.</p>
+                <p class="text-xs mt-2 text-stone-500">Developed by <a href="https://dacso.uk" target="_blank" class="text-luxe-amber hover:underline">dacso.uk</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center">
+        <div class="bg-white rounded-xl p-8 max-w-md mx-4 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check text-2xl text-green-600"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-luxe-stone mb-4">Message Sent!</h2>
+            <p class="text-stone-600 mb-6">Thank you for contacting us. We'll get back to you within 24 hours.</p>
+            <button onclick="closeSuccessModal()" class="bg-luxe-amber text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-900 transition-colors">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            // Show loading state
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                // Show success modal
+                document.getElementById('success-modal').classList.remove('hidden');
+                
+                // Reset form
+                event.target.reset();
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+
+        function openLiveChat() {
+            alert('Live chat would be implemented here. This would typically open a chat widget or redirect to a chat service.');
+        }
+
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert('Thank you for subscribing! You\'ll receive our latest skincare tips and exclusive offers.');
+            event.target.reset();
+        }
+    </script>
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">Shopping Cart</h2>
+                <button onclick="toggleCart()" class="text-stone-400 hover:text-stone-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="space-y-4 mb-6 max-h-96 overflow-y-auto">
+                <!-- Cart items will be populated here -->
+            </div>
+            <div class="border-t border-stone-200 pt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg font-semibold">Total:</span>
+                    <span id="cart-total" class="text-xl font-bold text-luxe-amber">£0.00</span>
+                </div>
+                <a href="cart.html" class="block w-full bg-luxe-amber text-white text-center py-3 rounded-lg font-semibold hover:bg-amber-900 transition-colors">
+                    View Cart
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Sidebar -->
+    <div id="wishlist-sidebar" class="fixed inset-y-0 right-0 w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">Wishlist</h2>
+                <button onclick="toggleWishlist()" class="text-stone-400 hover:text-stone-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="wishlist-items" class="space-y-4 mb-6 max-h-96 overflow-y-auto">
+                <!-- Wishlist items will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 notification hidden">
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-check"></i>
+            <span id="notification-text">Item added to cart!</span>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="toggleCart()"></div>
+
+    <!-- Wishlist Overlay -->
+    <div id="wishlist-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="toggleWishlist()"></div>
+
+    <!-- Live Chat Popup -->
+    <div id="live-chat-popup" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0" id="chat-popup-content">
+            <div class="p-6">
+                <!-- Chat Header -->
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-luxe-amber rounded-full flex items-center justify-center">
+                            <i class="fas fa-comments text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Noctis Support</h3>
+                            <p class="text-sm text-green-600">● Online</p>
+                        </div>
+                    </div>
+                    <button onclick="closeLiveChat()" class="text-stone-400 hover:text-stone-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Chat Messages -->
+                <div id="chat-messages" class="space-y-4 mb-6 max-h-80 overflow-y-auto">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-luxe-amber rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user text-white text-sm"></i>
+                        </div>
+                        <div class="bg-stone-100 rounded-lg p-3 max-w-xs">
+                            <p class="text-sm">Hi! I'm interested in your skincare products. Can you help me choose the right routine?</p>
+                            <p class="text-xs text-stone-500 mt-1">2:34 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-3 justify-end">
+                        <div class="bg-luxe-amber text-white rounded-lg p-3 max-w-xs">
+                            <p class="text-sm">Hello! I'd be happy to help you find the perfect skincare routine. What's your main skin concern?</p>
+                            <p class="text-xs text-amber-100 mt-1">2:35 PM</p>
+                        </div>
+                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user-tie text-white text-sm"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-luxe-amber rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user text-white text-sm"></i>
+                        </div>
+                        <div class="bg-stone-100 rounded-lg p-3 max-w-xs">
+                            <p class="text-sm">I have dry skin and some fine lines. What would you recommend?</p>
+                            <p class="text-xs text-stone-500 mt-1">2:36 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3 justify-end">
+                        <div class="bg-luxe-amber text-white rounded-lg p-3 max-w-xs">
+                            <p class="text-sm">Perfect! For dry skin with fine lines, I recommend our Dew-Drop Hydrator and Phyto-Renew Cream. Would you like me to explain the benefits?</p>
+                            <p class="text-xs text-amber-100 mt-1">2:37 PM</p>
+                        </div>
+                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user-tie text-white text-sm"></i>
+                        </div>
+                    </div>
+
+                    <!-- Typing Indicator -->
+                    <div id="typing-indicator" class="flex items-start space-x-3 hidden">
+                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user-tie text-white text-sm"></i>
+                        </div>
+                        <div class="bg-stone-100 rounded-lg p-3">
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-stone-400 rounded-full animate-bounce"></div>
+                                <div class="w-2 h-2 bg-stone-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                                <div class="w-2 h-2 bg-stone-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coming Soon Message -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-info-circle text-blue-600"></i>
+                        <p class="text-sm text-blue-800 font-medium">Live Chat Coming Soon!</p>
+                    </div>
+                    <p class="text-xs text-blue-700 mt-1">This is a preview of our upcoming live chat feature. For now, please use email or phone support.</p>
+                </div>
+
+                <!-- Message Input -->
+                <div class="flex space-x-2">
+                    <input type="text" placeholder="Type your message..." class="flex-1 px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-luxe-amber focus:outline-none" disabled>
+                    <button class="bg-luxe-amber text-white px-4 py-2 rounded-lg hover:bg-amber-900 transition-colors disabled:opacity-50" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/protection.js"></script>
+    <script src="js/performance.js"></script>
+    <script defer>
+(function(){'use strict';
+var ACTIVE=['text-luxe-amber','font-semibold'],INACTIVE=['text-luxe-stone'];
+function norm(p){p=p.split('?')[0].split('#')[0];return p.endsWith('/')?p+'index.html':p;}
+var cur=norm(location.pathname).toLowerCase(); if(cur==='/') cur='/index.html';
+var NAV=new Set(['index.html','shop.html','about.html','contact.html','cart.html','checkout.html']);
+function off(a){INACTIVE.forEach(c=>a.classList.add(c));ACTIVE.forEach(c=>a.classList.remove(c));a.removeAttribute('aria-current');}
+function on(a){ACTIVE.forEach(c=>a.classList.add(c));INACTIVE.forEach(c=>a.classList.remove(c));a.setAttribute('aria-current','page');}
+document.querySelectorAll('a[href]').forEach(a=>{try{var u=new URL(a.getAttribute('href'),location.href);
+if(u.origin!==location.origin)return;var file=u.pathname.split('/').pop()||'index.html';if(!NAV.has(file))return;off(a);
+var cand=norm(u.pathname).toLowerCase();if(cand===cur||(file==='index.html'&&(cur==='/index.html'||cur.endsWith('/index.html'))))on(a);}catch(e){}});
+})();
+</script>
+    <script src="temp_js.js"></script>
+    
+    <script>
+        // Badge update functions
+        function setBadgeCount(selector, count) {
+            document.querySelectorAll(selector).forEach(el => {
+                el.textContent = count;
+                el.classList.toggle('hidden', count === 0);
+            });
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+            // Use temp_js.js system
+            const cart = getCart();
+            const totalItems = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (Number(item.price) * (item.qty || 1)), 0);
+
+            // Update all badge instances
+            setBadgeCount('#cart-count, .cart-count', totalItems);
+
+            if (cartItems) {
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty</p>';
+                } else {
+                    cartItems.innerHTML = cart.map(item => `
+                        <div class="flex items-center space-x-3">
+                            <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded">
+                            <div class="flex-1">
+                                <h4 class="font-medium text-sm">${item.name}</h4>
+                                <p class="text-gray-600 text-sm">Qty: ${item.qty || 1} × $${item.price}</p>
+                            </div>
+                            <button onclick="removeFromCart('${item.id}')" class="text-gray-400 hover:text-red-500">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            if (cartTotal) {
+                cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
+            }
+        }
+
+        function updateWishlistDisplay() {
+            const wishlistItems = document.getElementById('wishlist-items');
+
+            // Use temp_js.js system
+            const wishlist = getWishlist();
+
+            // Update all badge instances
+            setBadgeCount('#wishlist-count, .wishlist-count', wishlist.length);
+
+            if (wishlistItems) {
+                if (wishlist.length === 0) {
+                    wishlistItems.innerHTML = '<p class="text-gray-500 text-center py-8">Your wishlist is empty</p>';
+                } else {
+                    wishlistItems.innerHTML = wishlist.map(item => `
+                        <div class="flex items-center space-x-3">
+                            <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded">
+                            <div class="flex-1">
+                                <h4 class="font-medium text-sm">${item.name}</h4>
+                                <p class="text-gray-600 text-sm">$${item.price}</p>
+                            </div>
+                            <button onclick="removeFromWishlist('${item.id}')" class="text-red-500 hover:text-red-700">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+
+        // Safe initialization with existence checks
+        function safeInit() {
+            if (typeof getCart === 'function' && typeof getWishlist === 'function') {
+                try { typeof setCart === 'function' && setCart(getCart()); } catch {}
+                try { typeof setWishlist === 'function' && setWishlist(getWishlist()); } catch {}
+                if (typeof updateCartDisplay === 'function') updateCartDisplay();
+                if (typeof updateWishlistDisplay === 'function') updateWishlistDisplay();
+            } else {
+                setTimeout(safeInit, 100);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', safeInit);
+
+        // Newsletter subscription function
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            
+            const emailInput = event.target.querySelector('input[type="email"]');
+            const email = emailInput.value;
+            
+            if (email && email.includes('@')) {
+                // Simulate successful subscription
+                showNewsletterPopup();
+                
+                // Clear the form
+                emailInput.value = '';
+                
+                // Optional: Store email in localStorage
+                const subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+                if (!subscribers.includes(email)) {
+                    subscribers.push(email);
+                    localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
+                }
+            }
+        }
+        
+        // Show newsletter popup
+        function showNewsletterPopup() {
+            const popup = document.getElementById('newsletter-popup');
+            const content = document.getElementById('popup-content');
+            
+            popup.classList.remove('hidden');
+            
+            // Trigger animation
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close promo banner
+        function closePromoBanner() {
+            document.getElementById('promo-banner').style.display = 'none';
+        }
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('-translate-x-full');
+        }
+        
+        // Close newsletter popup
+        function closeNewsletterPopup() {
+            const popup = document.getElementById('newsletter-popup');
+            const content = document.getElementById('popup-content');
+            
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                popup.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+        
+        // Close popup when clicking outside
+        document.getElementById('newsletter-popup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeNewsletterPopup();
+            }
+        });
+        
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const popup = document.getElementById('newsletter-popup');
+                if (!popup.classList.contains('hidden')) {
+                    closeNewsletterPopup();
+                }
+            }
+        });
+
+        // Live Chat Functions
+        function openLiveChat() {
+            const popup = document.getElementById('live-chat-popup');
+            const content = document.getElementById('chat-popup-content');
+            
+            popup.classList.remove('hidden');
+            
+            // Trigger animation
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            
+            // Simulate typing indicator after a delay
+            setTimeout(() => {
+                const typingIndicator = document.getElementById('typing-indicator');
+                typingIndicator.classList.remove('hidden');
+                
+                // Hide typing indicator after 2 seconds
+                setTimeout(() => {
+                    typingIndicator.classList.add('hidden');
+                }, 2000);
+            }, 3000);
+        }
+        
+        function closeLiveChat() {
+            const popup = document.getElementById('live-chat-popup');
+            const content = document.getElementById('chat-popup-content');
+            
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                popup.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+        
+        // Close live chat when clicking outside
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('live-chat-popup').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeLiveChat();
+                }
+            });
+            
+            // Mobile menu event listeners
+            document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+            document.getElementById('mobile-menu-close').addEventListener('click', toggleMobileMenu);
+        });
+    </script>
+
+</body>
+</html>
