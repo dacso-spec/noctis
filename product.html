@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    ========================================
+    COPYRIGHT AND LICENSING INFORMATION
+    ========================================
+    
+    © 2024 LuxeGlow E-commerce Demo Website
+    Owned by: dacsoapp.com
+    Website: www.dacsoapp.com
+    
+    IMPORTANT LEGAL NOTICE:
+    This is a demonstration website created for presentation and portfolio purposes only.
+    All content, design, code, and functionality are proprietary and protected by copyright.
+    
+    PERMITTED USE:
+    - Viewing and demonstration purposes
+    - Portfolio presentation
+    - Educational reference (with proper attribution)
+    
+    PROHIBITED USE:
+    - Commercial reproduction or distribution
+    - Copying code, design, or content without explicit permission
+    - Using as a template for commercial projects
+    - Reselling or redistributing in any form
+    
+    For licensing inquiries or commercial use permissions, contact:
+    Email: info@dacsoapp.com
+    Website: www.dacsoapp.com
+    
+    This notice must remain intact in all copies and derivatives.
+    ========================================
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' https://your-portfolio.example https://*.your-company.com">
+    <title id="page-title">Vitamin C Brightening Serum - LuxeGlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fallback Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/rtl-support.css">
+    <script src="js/protection.js"></script>
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        'luxe-amber': '#92400e',
+                        'luxe-stone': '#292524',
+                        'sage': {
+                            50: '#f0f9f0',
+                            100: '#dcf2dc',
+                            200: '#bce5bc',
+                            300: '#8dd18d',
+                            400: '#5bb85b',
+                            500: '#3a9d3a',
+                            600: '#2d7d2d',
+                            700: '#256325',
+                            800: '#225022',
+                            900: '#1f421f',
+                        },
+                        'blush': {
+                            50: '#fef7f7',
+                            100: '#fdeaea',
+                            200: '#fbd5d5',
+                            300: '#f7b3b3',
+                            400: '#f08888',
+                            500: '#e85d5d',
+                            600: '#d63f3f',
+                            700: '#b32e2e',
+                            800: '#942828',
+                            900: '#7a2525',
+                        },
+                        'warm': {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+        .cart-badge { animation: pulse 0.5s ease-in-out; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .fade-in { animation: fadeIn 0.8s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .image-zoom { transition: transform 0.3s ease; }
+        .image-zoom:hover { transform: scale(1.1); }
+        .tab-active { border-bottom: 2px solid #92400e; color: #92400e; }
+        .added-to-cart { background-color: #10b981 !important; }
+        .product-hover { transition: all 0.3s ease; }
+        .product-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        
+        /* Notification System */
+        .notification { 
+            opacity: 0;
+            transform: translateX(100%); 
+            transition: all 0.3s ease; 
+        }
+        .notification.show { 
+            opacity: 1;
+            transform: translateX(0); 
+        }
+    </style>
+    
+    <!-- Immediate Language Detection Script - Prevents FOUC -->
+    <script>
+        (function() {
+            // Get saved language immediately
+            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+            
+            // Set initial HTML attributes immediately
+            document.documentElement.lang = savedLang;
+            document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Add body classes for styling
+            document.documentElement.classList.add('initial-lang-' + savedLang);
+            
+            // Hide content initially if Arabic to prevent flash
+            if (savedLang === 'ar') {
+                document.documentElement.style.opacity = '0';
+                document.documentElement.style.transition = 'opacity 0.2s ease';
+            }
+        })();
+    </script>
+</head>
+<body class="bg-stone-50 text-stone-800">
+    <!-- Demo Warning Banner -->
+    <div class="bg-amber-100 border-b border-amber-200 text-amber-800 text-center py-2 text-sm font-medium">
+        <span class="en-content">⚠️ This is a demo website owned by <a href="https://www.dacsoapp.com" target="_blank" class="underline hover:text-amber-900">dacsoapp.com</a> - For presentation purposes only</span>
+        <span class="ar-content">⚠️ هذا موقع تجريبي مملوك لـ <a href="https://www.dacsoapp.com" target="_blank" class="underline hover:text-amber-900">dacsoapp.com</a> - لأغراض العرض فقط</span>
+    </div>
+    
+    <!-- Promo Banner -->
+    <div id="promo-banner" class="bg-luxe-amber text-white text-center py-2 text-sm font-medium relative">
+        <span class="en-content">✨ Free Shipping on Orders Above £100</span>
+        <span class="ar-content">✨ شحن مجاني للطلبات فوق 100 جنيه إسترليني</span>
+        <button onclick="closePromoBanner()" class="absolute right-4 top-1/2 transform -translate-y-1/2 hover:bg-white/20 rounded-full p-1">
+            <i class="fas fa-times text-xs"></i>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-luxe-amber">LuxeGlow</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                        <span class="en-content">Home</span>
+                        <span class="ar-content">الرئيسية</span>
+                    </a>
+                    <a href="shop.html" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                        <span class="en-content">Shop</span>
+                        <span class="ar-content">المتجر</span>
+                    </a>
+                    <a href="about.html" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                        <span class="en-content">About</span>
+                        <span class="ar-content">من نحن</span>
+                    </a>
+                    <a href="contact.html" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                        <span class="en-content">Contact</span>
+                        <span class="ar-content">اتصل بنا</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Language Toggle -->
+                    <button id="lang-toggle-btn" class="text-luxe-stone hover:text-luxe-amber transition-colors flex items-center space-x-2 px-3 py-2 rounded-lg border border-stone-200 hover:border-luxe-amber">
+                        <i class="fas fa-globe text-lg"></i>
+                        <span id="current-lang" class="text-sm font-medium">AR</span>
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden text-luxe-stone hover:text-luxe-amber transition-colors">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                    
+                    <!-- Search -->
+                    <div class="relative">
+                        <button onclick="toggleSearch()" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                        <i class="fas fa-search text-lg"></i>
+                    </button>
+                        <div id="search-overlay" class="fixed inset-0 bg-black/50 z-50 hidden search-overlay">
+                            <div class="flex items-center justify-center min-h-screen p-4">
+                                <div class="bg-white rounded-xl p-6 w-full max-w-2xl">
+                                    <div class="flex items-center space-x-4">
+                                        <input type="text" id="search-input" placeholder="Search products..." class="en-content flex-1 px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-luxe-amber focus:outline-none"
+                                               onkeyup="searchProducts(event)">
+                                        <input type="text" id="search-input-ar" placeholder="البحث عن المنتجات..." class="ar-content flex-1 px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-luxe-amber focus:outline-none" 
+                                               class="flex-1 px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-luxe-amber focus:outline-none"
+                                               onkeyup="searchProducts(event)">
+                                        <button onclick="toggleSearch()" class="text-stone-400 hover:text-stone-600">
+                                            <i class="fas fa-times text-xl"></i>
+                                        </button>
+                                    </div>
+                                    <div id="search-results" class="mt-4 max-h-64 overflow-y-auto">
+                                        <!-- Search results will appear here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Wishlist -->
+                    <button class="text-luxe-stone hover:text-luxe-amber transition-colors relative" onclick="toggleWishlist()">
+                        <i class="fas fa-heart text-lg wishlist-icon"></i>
+                        <span class="wishlist-count absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center cart-badge hidden">0</span>
+                    </button>
+                    
+                    <!-- Cart -->
+                    <button class="text-luxe-stone hover:text-luxe-amber transition-colors relative" onclick="toggleCart()">
+                        <i class="fas fa-shopping-bag text-lg"></i>
+                        <span class="cart-count absolute -top-2 -right-2 bg-luxe-amber text-white text-xs rounded-full h-5 w-5 flex items-center justify-center cart-badge hidden">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-50 transform -translate-x-full transition-transform duration-300 md:hidden">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-luxe-amber">
+                    <span class="en-content">Menu</span>
+                    <span class="ar-content">القائمة</span>
+                </h2>
+                <button id="mobile-menu-close" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <nav class="space-y-6">
+                <a href="index.html" class="block text-xl font-semibold text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_home">Home</a>
+                <a href="shop.html" class="block text-xl font-semibold text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_shop">Shop</a>
+                <a href="about.html" class="block text-xl font-semibold text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_about">About</a>
+                <a href="contact.html" class="block text-xl font-semibold text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <section class="py-4 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center space-x-2 text-sm">
+                <a href="index.html" class="text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_home">Home</a>
+                <i class="fas fa-chevron-right text-stone-400"></i>
+                <a href="shop.html" class="text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_shop">Shop</a>
+                <i class="fas fa-chevron-right text-stone-400"></i>
+                <span class="text-luxe-stone" data-translate-key="product_name">Vitamin C Brightening Serum</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Product Details -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Product Images -->
+                <div class="fade-in">
+                    <div class="space-y-4">
+                        <!-- Main Image -->
+                        <div class="aspect-square bg-white rounded-xl shadow-lg overflow-hidden">
+                            <img id="main-image" src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Vitamin C Brightening Serum" 
+                                 class="w-full h-full object-cover image-zoom cursor-zoom-in">
+                        </div>
+                        
+                        <!-- Thumbnail Images -->
+                        <div class="grid grid-cols-4 gap-4">
+                            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="Product view 1" 
+                                 class="aspect-square object-cover rounded-lg cursor-pointer border-2 border-luxe-amber opacity-100"
+                                 onclick="changeMainImage(this.src.replace('w=200', 'w=800'))">
+                            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="Product view 2" 
+                                 class="aspect-square object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-luxe-amber opacity-70 hover:opacity-100"
+                                 onclick="changeMainImage(this.src.replace('w=200', 'w=800'))">
+                            <img src="https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="Product view 3" 
+                                 class="aspect-square object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-luxe-amber opacity-70 hover:opacity-100"
+                                 onclick="changeMainImage(this.src.replace('w=200', 'w=800'))">
+                            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="Product view 4" 
+                                 class="aspect-square object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-luxe-amber opacity-70 hover:opacity-100"
+                                 onclick="changeMainImage(this.src.replace('w=200', 'w=800'))">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="fade-in">
+                    <div class="space-y-6">
+                        <div>
+                            <h1 class="text-3xl md:text-4xl font-bold text-luxe-stone mb-4">
+                                <span class="en-content">Vitamin C Brightening Serum</span>
+                                <span class="ar-content">سيروم فيتامين سي للإشراق</span>
+                            </h1>
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-stone-600">
+                                    <span class="en-content">(127 reviews)</span>
+                                    <span class="ar-content">(127 تقييم)</span>
+                                </span>
+                            </div>
+                            <p class="text-3xl font-bold text-luxe-amber mb-6">£89</p>
+                        </div>
+
+                        <div>
+                            <p class="text-stone-600 leading-relaxed mb-6">
+                                <span class="en-content">Our powerful Vitamin C Brightening Serum is formulated with 20% L-ascorbic acid and hyaluronic acid to deliver intense hydration while brightening and evening skin tone. This lightweight serum absorbs quickly and works to reduce the appearance of dark spots, fine lines, and dullness for a radiant, youthful complexion.</span>
+                                <span class="ar-content">سيروم فيتامين سي القوي مصمم بحمض الأسكوربيك 20% وحمض الهيالورونيك لتقديم ترطيب مكثف مع تفتيح وتوحيد لون البشرة. هذا السيروم الخفيف يمتص بسرعة ويعمل على تقليل ظهور البقع الداكنة والخطوط الدقيقة والبهتان لمظهر مشرق وشاب.</span>
+                            </p>
+                            
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-check text-green-500"></i>
+                                    <span>
+                                        <span class="en-content">20% L-Ascorbic Acid for maximum potency</span>
+                                        <span class="ar-content">20% حمض الأسكوربيك لأقصى فعالية</span>
+                                    </span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-check text-green-500"></i>
+                                    <span>
+                                        <span class="en-content">Hyaluronic Acid for deep hydration</span>
+                                        <span class="ar-content">حمض الهيالورونيك للترطيب العميق</span>
+                                    </span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-check text-green-500"></i>
+                                    <span>
+                                        <span class="en-content">Reduces dark spots and hyperpigmentation</span>
+                                        <span class="ar-content">يقلل البقع الداكنة وفرط التصبغ</span>
+                                    </span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-check text-green-500"></i>
+                                    <span>
+                                        <span class="en-content">Stimulates collagen production</span>
+                                        <span class="ar-content">يحفز إنتاج الكولاجين</span>
+                                    </span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-check text-green-500"></i>
+                                    <span>
+                                        <span class="en-content">Paraben-free and cruelty-free</span>
+                                        <span class="ar-content">خالي من البارابين وغير مختبر على الحيوانات</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quantity and Add to Cart -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <label class="font-semibold">
+                                    <span class="en-content">Quantity:</span>
+                                    <span class="ar-content">الكمية:</span>
+                                </label>
+                                <div class="flex items-center border border-stone-300 rounded-lg">
+                                    <button onclick="decreaseQuantity()" class="px-3 py-2 hover:bg-stone-100 transition-colors">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span id="quantity" class="px-4 py-2 border-x border-stone-300">1</span>
+                                    <button onclick="increaseQuantity()" class="px-3 py-2 hover:bg-stone-100 transition-colors">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button id="add-to-cart-btn" onclick="addToCart()" 
+                                    class="w-full bg-luxe-amber text-white py-4 rounded-lg font-semibold text-lg hover:bg-amber-900 transition-colors transform hover:scale-105">
+                                <span class="en-content">Add to Cart - £89</span>
+                                <span class="ar-content">أضف إلى السلة - £89</span>
+                            </button>
+                            
+                            <div class="flex space-x-4">
+                                <button class="flex-1 border border-stone-300 py-3 rounded-lg font-semibold hover:bg-stone-50 transition-colors">
+                                    <i class="fas fa-heart mr-2 text-sage-600"></i>
+                                    <span class="en-content">Add to Wishlist</span>
+                                    <span class="ar-content">أضف لقائمة الأمنيات</span>
+                                </button>
+                                <button class="flex-1 border border-stone-300 py-3 rounded-lg font-semibold hover:bg-stone-50 transition-colors">
+                                    <i class="fas fa-share mr-2"></i>
+                                    <span class="en-content">Share</span>
+                                    <span class="ar-content">مشاركة</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Details -->
+                        <div class="border-t pt-6">
+                            <div class="space-y-4">
+                                <div class="flex justify-between">
+                                    <span class="text-stone-600" data-translate-key="product_sku">SKU:</span>
+                                    <span class="font-semibold">VC-SERUM-001</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-stone-600" data-translate-key="product_category">Category:</span>
+                                    <span class="font-semibold" data-translate-key="product_category_skincare">Skincare</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-stone-600" data-translate-key="product_size">Size:</span>
+                                    <span class="font-semibold">30ml</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-stone-600" data-translate-key="product_free_shipping">Free Shipping:</span>
+                                    <span class="font-semibold text-green-600" data-translate-key="product_yes">Yes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Tabs -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="border-b border-stone-200 mb-8">
+                <nav class="flex space-x-8">
+                    <button class="tab-btn py-4 font-semibold tab-active" onclick="showTab('description')" data-translate-key="product_tab_description">
+                        Description
+                    </button>
+                    <button class="tab-btn py-4 font-semibold text-stone-600 hover:text-luxe-amber" onclick="showTab('ingredients')" data-translate-key="product_tab_ingredients">
+                        Ingredients
+                    </button>
+                    <button class="tab-btn py-4 font-semibold text-stone-600 hover:text-luxe-amber" onclick="showTab('reviews')" data-translate-key="product_tab_reviews">
+                        Reviews (127)
+                    </button>
+                    <button class="tab-btn py-4 font-semibold text-stone-600 hover:text-luxe-amber" onclick="showTab('shipping')" data-translate-key="product_tab_shipping">
+                        Shipping & Returns
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="tab-content">
+                <!-- Description Tab -->
+                <div id="description" class="tab-content">
+                    <div class="prose max-w-none">
+                        <h3 class="text-2xl font-bold mb-4" data-translate-key="product_about_title">About This Product</h3>
+                        <p class="text-stone-600 leading-relaxed mb-6" data-translate-key="product_about_text">
+                            Our Vitamin C Brightening Serum is a professional-grade skincare treatment designed to 
+                            transform your complexion. This potent formula combines the power of 20% L-ascorbic acid 
+                            with hyaluronic acid to deliver visible results in just a few weeks.
+                        </p>
+                        <h4 class="text-xl font-semibold mb-3" data-translate-key="product_benefits_title">Key Benefits:</h4>
+                        <ul class="list-disc list-inside text-stone-600 space-y-2 mb-6">
+                            <li data-translate-key="product_benefit_1">Brightens and evens skin tone</li>
+                            <li data-translate-key="product_benefit_2">Reduces the appearance of dark spots and hyperpigmentation</li>
+                            <li data-translate-key="product_benefit_3">Stimulates collagen production for firmer skin</li>
+                            <li data-translate-key="product_benefit_4">Provides intense hydration without heaviness</li>
+                            <li data-translate-key="product_benefit_5">Protects against environmental damage</li>
+                            <li data-translate-key="product_benefit_6">Suitable for all skin types</li>
+                        </ul>
+                        <h4 class="text-xl font-semibold mb-3" data-translate-key="product_how_to_use_title">How to Use:</h4>
+                        <p class="text-stone-600 leading-relaxed" data-translate-key="product_how_to_use_text">
+                            Apply 2-3 drops to clean, dry skin in the morning. Gently pat into skin until fully absorbed. 
+                            Follow with moisturizer and always use SPF during the day. Start with every other day and 
+                            gradually increase to daily use as your skin adjusts.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Ingredients Tab -->
+                <div id="ingredients" class="tab-content hidden">
+                    <div class="prose max-w-none">
+                        <h3 class="text-2xl font-bold mb-4" data-translate-key="product_ingredients_title">Ingredient List</h3>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-lg font-semibold mb-3 text-luxe-amber" data-translate-key="product_active_ingredients">Active Ingredients</h4>
+                                <ul class="space-y-2 text-stone-600">
+                                    <li data-translate-key="product_ingredient_1"><strong>L-Ascorbic Acid (20%)</strong> - Potent antioxidant that brightens skin</li>
+                                    <li data-translate-key="product_ingredient_2"><strong>Hyaluronic Acid</strong> - Deep hydration and plumping</li>
+                                    <li data-translate-key="product_ingredient_3"><strong>Vitamin E</strong> - Additional antioxidant protection</li>
+                                    <li data-translate-key="product_ingredient_4"><strong>Ferulic Acid</strong> - Stabilizes Vitamin C and enhances efficacy</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold mb-3 text-luxe-amber" data-translate-key="product_supporting_ingredients">Supporting Ingredients</h4>
+                                <ul class="space-y-2 text-stone-600">
+                                    <li data-translate-key="product_ingredient_5">Purified Water</li>
+                                    <li data-translate-key="product_ingredient_6">Glycerin</li>
+                                    <li data-translate-key="product_ingredient_7">Ethoxydiglycol</li>
+                                    <li data-translate-key="product_ingredient_8">Phenoxyethanol</li>
+                                    <li data-translate-key="product_ingredient_9">Ethylhexylglycerin</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-8 p-4 bg-green-50 rounded-lg">
+                            <p class="text-green-800 font-semibold">
+                                <i class="fas fa-leaf mr-2"></i>
+                                <span data-translate-key="product_ingredients_note">This product is paraben-free, sulfate-free, and cruelty-free.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Tab -->
+                <div id="reviews" class="tab-content hidden">
+                    <div class="space-y-8">
+                        <div class="flex items-center space-x-8">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-luxe-amber">4.8</div>
+                                <div class="flex text-yellow-400 justify-center">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="text-stone-600 text-sm">127 <span data-translate-key="product_reviews_count">reviews</span></div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="space-y-2">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-sm">5</span>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <div class="flex-1 bg-stone-200 rounded-full h-2">
+                                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 85%"></div>
+                                        </div>
+                                        <span class="text-sm text-stone-600">85%</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-sm">4</span>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <div class="flex-1 bg-stone-200 rounded-full h-2">
+                                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 12%"></div>
+                                        </div>
+                                        <span class="text-sm text-stone-600">12%</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-sm">3</span>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <div class="flex-1 bg-stone-200 rounded-full h-2">
+                                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 2%"></div>
+                                        </div>
+                                        <span class="text-sm text-stone-600">2%</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-sm">2</span>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <div class="flex-1 bg-stone-200 rounded-full h-2">
+                                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 1%"></div>
+                                        </div>
+                                        <span class="text-sm text-stone-600">1%</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-sm">1</span>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <div class="flex-1 bg-stone-200 rounded-full h-2">
+                                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 0%"></div>
+                                        </div>
+                                        <span class="text-sm text-stone-600">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sample Reviews -->
+                        <div class="space-y-6">
+                            <div class="border-b border-stone-200 pb-6">
+                                <div class="flex items-center space-x-4 mb-3">
+                                    <div class="w-10 h-10 bg-luxe-amber rounded-full flex items-center justify-center text-white font-semibold">
+                                        S
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold" data-translate-key="product_review_1_name">Sarah M.</div>
+                                        <div class="flex text-yellow-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-stone-600" data-translate-key="product_review_1_text">
+                                    "Absolutely love this serum! I've been using it for 3 weeks and can already see 
+                                    a noticeable difference in my skin's brightness. It absorbs quickly and doesn't 
+                                    leave any sticky residue. Worth every penny!"
+                                </p>
+                            </div>
+
+                            <div class="border-b border-stone-200 pb-6">
+                                <div class="flex items-center space-x-4 mb-3">
+                                    <div class="w-10 h-10 bg-luxe-amber rounded-full flex items-center justify-center text-white font-semibold">
+                                        J
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold" data-translate-key="product_review_2_name">Jessica L.</div>
+                                        <div class="flex text-yellow-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-stone-600" data-translate-key="product_review_2_text">
+                                    "This is the best Vitamin C serum I've tried. My dark spots have faded significantly 
+                                    and my skin looks so much more radiant. The packaging is beautiful too!"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping Tab -->
+                <div id="shipping" class="tab-content hidden">
+                    <div class="prose max-w-none">
+                        <h3 class="text-2xl font-bold mb-4" data-translate-key="product_shipping_title">Shipping & Returns</h3>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-lg font-semibold mb-3 text-luxe-amber" data-translate-key="product_shipping_info_title">Shipping Information</h4>
+                                <ul class="space-y-2 text-stone-600">
+                                    <li data-translate-key="product_shipping_1">• Free shipping on orders over £100</li>
+                                    <li data-translate-key="product_shipping_2">• Standard delivery: 3-5 business days</li>
+                                    <li data-translate-key="product_shipping_3">• Express delivery: 1-2 business days</li>
+                                    <li data-translate-key="product_shipping_5">• International shipping available</li>
+                                    <li data-translate-key="product_shipping_6">• All orders dispatched within 24 hours</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold mb-3 text-luxe-amber" data-translate-key="product_returns_exchanges_title">Returns & Exchanges</h4>
+                                <ul class="space-y-2 text-stone-600">
+                                    <li data-translate-key="product_returns_1">• 30-day return policy</li>
+                                    <li data-translate-key="product_returns_6">• Free returns on all orders</li>
+                                    <li data-translate-key="product_returns_7">• Items must be unopened and in original packaging</li>
+                                    <li data-translate-key="product_returns_5">• Refunds processed within 5-7 business days</li>
+                                    <li data-translate-key="product_returns_8">• Exchanges available for different sizes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="py-16 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">You Might Also Like</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Related Product 1 -->
+                <div class="product-hover bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer h-full flex flex-col" onclick="window.location.href='product.html'">
+                    <div class="relative group flex-shrink-0">
+                        <!-- Main Image -->
+                        <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Hyaluronic Acid Moisturizer" 
+                             class="w-full h-64 object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110">
+                        
+                        <!-- Hover Image -->
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Hyaluronic Acid Moisturizer" 
+                             class="w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-110">
+                        
+                        <!-- Wishlist Button -->
+                        <button class="wishlist-btn absolute top-4 left-4 bg-white/90 hover:bg-white rounded-full p-2 transition-all duration-300 hover:scale-110" onclick="event.stopPropagation(); toggleWishlistItem('hyaluronic-moisturizer')">
+                            <i class="fas fa-heart text-sage-600 transition-colors duration-300"></i>
+                        </button>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg mb-2 line-clamp-2 h-14 overflow-hidden">Hyaluronic Acid Moisturizer</h3>
+                            <p class="text-stone-600 text-sm mb-4 line-clamp-2 h-10 overflow-hidden">Intensive hydration for plump, dewy skin</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-2xl font-bold text-luxe-amber">£75</span>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="event.stopPropagation(); addToCart('hyaluronic-moisturizer', 'Hyaluronic Acid Moisturizer', 75, 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')" 
+                                class="w-full bg-luxe-amber text-white py-2 rounded-lg hover:bg-amber-900 transition-colors mt-auto">
+                            <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Related Product 2 -->
+                <div class="product-hover bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer h-full flex flex-col" onclick="window.location.href='product.html'">
+                    <div class="relative group flex-shrink-0">
+                        <!-- Main Image -->
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Retinol Night Cream" 
+                             class="w-full h-64 object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110">
+                        
+                        <!-- Hover Image -->
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Retinol Night Cream" 
+                             class="w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-110">
+                        
+                        <!-- Wishlist Button -->
+                        <button class="wishlist-btn absolute top-4 left-4 bg-white/90 hover:bg-white rounded-full p-2 transition-all duration-300 hover:scale-110" onclick="event.stopPropagation(); toggleWishlistItem('retinol-cream')">
+                            <i class="fas fa-heart text-sage-600 transition-colors duration-300"></i>
+                        </button>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg mb-2 line-clamp-2 h-14 overflow-hidden">Retinol Night Cream</h3>
+                            <p class="text-stone-600 text-sm mb-4 line-clamp-2 h-10 overflow-hidden">Advanced anti-aging treatment</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-2xl font-bold text-luxe-amber">£95</span>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="event.stopPropagation(); addToCart('retinol-cream', 'Retinol Night Cream', 95, 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')" 
+                                class="w-full bg-luxe-amber text-white py-2 rounded-lg hover:bg-amber-900 transition-colors mt-auto">
+                            <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Related Product 3 -->
+                <div class="product-hover bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer h-full flex flex-col" onclick="window.location.href='product.html'">
+                    <div class="relative group flex-shrink-0">
+                        <!-- Main Image -->
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Gentle Foaming Cleanser" 
+                             class="w-full h-64 object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110">
+                        
+                        <!-- Hover Image -->
+                        <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Gentle Foaming Cleanser" 
+                             class="w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-110">
+                        
+                        <!-- Wishlist Button -->
+                        <button class="wishlist-btn absolute top-4 left-4 bg-white/90 hover:bg-white rounded-full p-2 transition-all duration-300 hover:scale-110" onclick="event.stopPropagation(); toggleWishlistItem('gentle-cleanser')">
+                            <i class="fas fa-heart text-sage-600 transition-colors duration-300"></i>
+                        </button>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg mb-2 line-clamp-2 h-14 overflow-hidden">Gentle Foaming Cleanser</h3>
+                            <p class="text-stone-600 text-sm mb-4 line-clamp-2 h-10 overflow-hidden">Soothing daily cleanser</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-2xl font-bold text-luxe-amber">£45</span>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="event.stopPropagation(); addToCart('gentle-cleanser', 'Gentle Foaming Cleanser', 45, 'https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')" 
+                                class="w-full bg-luxe-amber text-white py-2 rounded-lg hover:bg-amber-900 transition-colors mt-auto">
+                            <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Related Product 4 -->
+                <div class="product-hover bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer h-full flex flex-col" onclick="window.location.href='product.html'">
+                    <div class="relative group flex-shrink-0">
+                        <!-- Main Image -->
+                        <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Anti-Aging Eye Cream" 
+                             class="w-full h-64 object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110">
+                        
+                        <!-- Hover Image -->
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Anti-Aging Eye Cream" 
+                             class="w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-110">
+                        
+                        <!-- Wishlist Button -->
+                        <button class="wishlist-btn absolute top-4 left-4 bg-white/90 hover:bg-white rounded-full p-2 transition-all duration-300 hover:scale-110" onclick="event.stopPropagation(); toggleWishlistItem('eye-cream')">
+                            <i class="fas fa-heart text-sage-600 transition-colors duration-300"></i>
+                        </button>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg mb-2 line-clamp-2 h-14 overflow-hidden">Anti-Aging Eye Cream</h3>
+                            <p class="text-stone-600 text-sm mb-4 line-clamp-2 h-10 overflow-hidden">Targeted treatment for delicate eye area</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-2xl font-bold text-luxe-amber">£85</span>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="event.stopPropagation(); addToCart('eye-cream', 'Anti-Aging Eye Cream', 85, 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')" 
+                                class="w-full bg-luxe-amber text-white py-2 rounded-lg hover:bg-amber-900 transition-colors mt-auto">
+                            <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-warm-100 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-luxe-amber mb-4">LuxeGlow</h3>
+                    <p class="text-stone-600 mb-4">Premium skincare for radiant, healthy skin. Crafted with love and the finest ingredients.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-stone-400 hover:text-luxe-amber transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-stone-400 hover:text-luxe-amber transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-stone-400 hover:text-luxe-amber transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="shop.html" class="text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_shop">Shop</a></li>
+                        <li><a href="about.html" class="text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_about">About</a></li>
+                        <li><a href="contact.html" class="text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_contact">Contact</a></li>
+                        <li><a href="#" class="text-stone-600 hover:text-luxe-amber transition-colors">Shipping</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Customer Care</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-stone-600 hover:text-luxe-amber transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-stone-600 hover:text-luxe-amber transition-colors">Returns</a></li>
+                        <li><a href="#" class="text-stone-600 hover:text-luxe-amber transition-colors">Size Guide</a></li>
+                        <li><a href="#" class="text-stone-600 hover:text-luxe-amber transition-colors">Track Order</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-stone-600">
+                        <li>📧 hello@luxeglow.com</li>
+                        <li>📞 +44 20 7123 4567</li>
+                        <li>📍 London, UK</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-stone-200 mt-8 pt-8 text-center text-stone-600">
+                <p>&copy; 2024 LuxeGlow. All rights reserved. Demo owned by <a href="https://www.dacsoapp.com" target="_blank" class="text-luxe-amber hover:underline">dacsoapp.com</a></p>
+                <p class="text-xs mt-2 text-stone-500">This is a demonstration website for presentation purposes only. Not for commercial reproduction.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let quantity = 1;
+
+        function changeMainImage(src) {
+            document.getElementById('main-image').src = src;
+            
+            // Update thumbnail borders
+            document.querySelectorAll('.grid img').forEach(img => {
+                img.classList.remove('border-luxe-amber', 'opacity-100');
+                img.classList.add('border-transparent', 'opacity-70');
+            });
+            event.target.classList.add('border-luxe-amber', 'opacity-100');
+            event.target.classList.remove('border-transparent', 'opacity-70');
+        }
+
+        function increaseQuantity() {
+            quantity++;
+            document.getElementById('quantity').textContent = quantity;
+            updateAddToCartButton();
+        }
+
+        function decreaseQuantity() {
+            if (quantity > 1) {
+                quantity--;
+                document.getElementById('quantity').textContent = quantity;
+                updateAddToCartButton();
+            }
+        }
+
+        function updateAddToCartButton() {
+            const total = 89 * quantity;
+            document.getElementById('add-to-cart-btn').textContent = `Add to Cart - £${total}`;
+        }
+
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('text-stone-600');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // Add active class to clicked tab button
+            event.target.classList.add('tab-active');
+            event.target.classList.remove('text-stone-600');
+        }
+
+        function addToCartProduct() {
+            const product = {
+                id: 'vitamin-c-serum',
+                name: 'Vitamin C Brightening Serum',
+                price: 89 * quantity,
+                image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                qty: quantity
+            };
+            
+            addToCart(product);
+            
+            // Show success animation
+            const button = document.getElementById('add-to-cart-btn');
+            const originalText = button.textContent;
+            const originalClass = button.className;
+            
+            button.textContent = 'Added to Cart!';
+            button.classList.add('added-to-cart');
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('added-to-cart');
+            }, 2000);
+        }
+
+        // Generic addToCart function for related products
+        function addToCartProductGeneric(id, name, price, image) {
+            const product = {
+                id: id,
+                name: name,
+                price: price,
+                image: image,
+                qty: 1
+            };
+            
+            addToCart(product);
+        }
+    </script>
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">Shopping Cart</h2>
+                <button onclick="toggleCart()" class="text-stone-400 hover:text-stone-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="space-y-4 mb-6 max-h-96 overflow-y-auto">
+                <!-- Cart items will be populated here -->
+            </div>
+            <div class="border-t border-stone-200 pt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg font-semibold">Total:</span>
+                    <span id="cart-total" class="text-xl font-bold text-luxe-amber">£0.00</span>
+                </div>
+                <a href="cart.html" class="block w-full bg-luxe-amber text-white text-center py-3 rounded-lg font-semibold hover:bg-amber-900 transition-colors">
+                    View Cart
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Sidebar -->
+    <div id="wishlist-sidebar" class="fixed inset-y-0 right-0 w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">Wishlist</h2>
+                <button onclick="toggleWishlist()" class="text-stone-400 hover:text-stone-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="wishlist-items" class="space-y-4 mb-6 max-h-96 overflow-y-auto">
+                <!-- Wishlist items will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="toggleCart()"></div>
+
+    <!-- Notification System -->
+    <div id="notification" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 notification" style="opacity: 0; transform: translateX(100%); transition: all 0.3s ease;">
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-check"></i>
+            <span id="notification-text">Item added to cart!</span>
+        </div>
+    </div>
+
+    <script src="temp_js.js"></script>
+    
+    <!-- Language Support Scripts -->
+    <script src="js/translations.js"></script>
+    <script src="js/language-switcher.js"></script>
+</body>
+</html>

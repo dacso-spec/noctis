@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    ========================================
+    COPYRIGHT AND LICENSING INFORMATION
+    ========================================
+    
+    © 2024 LuxeGlow E-commerce Demo Website
+    Owned by: dacsoapp.com
+    Website: www.dacsoapp.com
+    
+    IMPORTANT LEGAL NOTICE:
+    This is a demonstration website created for presentation and portfolio purposes only.
+    All content, design, code, and functionality are proprietary and protected by copyright.
+    
+    PERMITTED USE:
+    - Viewing and demonstration purposes
+    - Portfolio presentation
+    - Educational reference (with proper attribution)
+    
+    PROHIBITED USE:
+    - Commercial reproduction or distribution
+    - Copying code, design, or content without explicit permission
+    - Using as a template for commercial projects
+    - Reselling or redistributing in any form
+    
+    For licensing inquiries or commercial use permissions, contact:
+    Email: info@dacsoapp.com
+    Website: www.dacsoapp.com
+    
+    This notice must remain intact in all copies and derivatives.
+    ========================================
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' https://your-portfolio.example https://*.your-company.com">
+    <title>LuxeGlow - Premium Skincare Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fallback Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/rtl-support.css">
+    <script src="js/protection.js"></script>
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        'luxe-amber': '#92400e',
+                        'luxe-stone': '#292524',
+                        'sage': {
+                            50: '#f0f9f0',
+                            100: '#dcf2dc',
+                            200: '#bce5bc',
+                            300: '#8dd18d',
+                            400: '#5bb85b',
+                            500: '#3a9d3a',
+                            600: '#2d7d2d',
+                            700: '#256325',
+                            800: '#225022',
+                            900: '#1f421f',
+                        },
+                        'blush': {
+                            50: '#fef7f7',
+                            100: '#fdeaea',
+                            200: '#fbd5d5',
+                            300: '#f7b3b3',
+                            400: '#f08888',
+                            500: '#e85d5d',
+                            600: '#d63f3f',
+                            700: '#b32e2e',
+                            800: '#942828',
+                            900: '#7a2525',
+                        },
+                        'warm': {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            line-height: 1.6;
+            letter-spacing: -0.01em;
+        }
+        
+        /* Line clamp utilities for consistent text truncation */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Modern Hero Gradient */
+        .hero-bg { 
+            background: linear-gradient(135deg, #f0f9f0 0%, #dcf2dc 50%, #fef7f7 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(60, 157, 58, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(232, 93, 93, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        /* Enhanced Product Cards */
+        .product-hover { 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .product-hover:hover { 
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Modern Cards */
+        .minimal-card { 
+            border: 1px solid #e7e5e4;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .minimal-card:hover { 
+            border-color: #3a9d3a;
+            box-shadow: 0 10px 25px -5px rgba(60, 157, 58, 0.1);
+        }
+        
+        /* Animations */
+        .fade-in { animation: fadeIn 0.8s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .cart-badge { animation: pulse 0.5s ease-in-out; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .quick-add-btn { opacity: 0; transition: all 0.3s ease; }
+        .product-hover:hover .quick-add-btn { opacity: 1; }
+        .wishlist-btn { opacity: 0; transition: all 0.3s ease; }
+        .product-hover:hover .wishlist-btn { opacity: 1; }
+        .search-overlay { backdrop-filter: blur(10px); }
+        .notification { 
+            opacity: 0;
+            transform: translateX(100%); 
+            transition: all 0.3s ease; 
+        }
+        .notification.show { 
+            opacity: 1;
+            transform: translateX(0); 
+        }
+        
+        /* Typography Enhancements */
+        .heading-xl {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .heading-lg {
+            font-size: clamp(1.875rem, 4vw, 3rem);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+        
+        .heading-md {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f5f5f4;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #3a9d3a;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2d7d2d;
+        }
+        
+        /* Focus States */
+        .focus-ring:focus {
+            outline: none;
+            ring: 2px;
+            ring-color: #3a9d3a;
+            ring-offset: 2px;
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            z-index: 9999;
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+    </style>
+    
+    <!-- Immediate Language Detection Script - Prevents FOUC -->
+    <script>
+        (function() {
+            // Get saved language immediately
+            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+            
+            // Set initial HTML attributes immediately
+            document.documentElement.lang = savedLang;
+            document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Add body classes for styling
+            document.documentElement.classList.add('initial-lang-' + savedLang);
+            
+            // Hide content initially if Arabic to prevent flash
+            if (savedLang === 'ar') {
+                document.documentElement.style.opacity = '0';
+                document.documentElement.style.transition = 'opacity 0.2s ease';
+            }
+        })();
+    </script>
+</head>
+<body class="bg-stone-50 text-stone-800">
+    <!-- Demo Warning Banner -->
+    <div class="bg-amber-100 border-b border-amber-200 text-amber-800 text-center py-2 text-sm font-medium">
+        ⚠️ This is a demo website owned by <a href="https://www.dacsoapp.com" target="_blank" class="underline hover:text-amber-900">dacsoapp.com</a> - For presentation purposes only
+    </div>
+    
+    <!-- Promo Banner -->
+    <div id="promo-banner" class="bg-luxe-amber text-white text-center py-2 text-sm font-medium relative">
+        <span data-translate-key="promo_banner">✨ Free Shipping on Orders Above £100</span>
+        <button onclick="closePromoBanner()" class="absolute right-4 top-1/2 transform -translate-y-1/2 hover:bg-white/20 rounded-full p-1">
+            <i class="fas fa-times text-xs"></i>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold text-luxe-amber">LuxeGlow</a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                        <span data-translate-key="nav_home">Home</span>
+                    </a>
+                    <a href="shop.html" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                        <span data-translate-key="nav_shop">Shop</span>
+                    </a>
+                    <a href="about.html" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                        <span data-translate-key="nav_about">About</span>
+                    </a>
+                    <a href="contact.html" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                        <span data-translate-key="nav_contact">Contact</span>
+                    </a>
+                </div>
+
+                <!-- Right side icons -->
+                <div class="flex items-center space-x-4">
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden text-luxe-stone hover:text-luxe-amber transition-colors">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+
+                    <!-- Language Toggle -->
+                    <button id="lang-toggle-btn" class="hidden md:flex text-luxe-stone hover:text-luxe-amber transition-colors items-center space-x-2 px-3 py-2 rounded-lg border border-stone-200 hover:border-luxe-amber">
+                        <i class="fas fa-globe text-lg"></i>
+                        <span id="current-lang" class="text-sm font-medium">AR</span>
+                    </button>
+                    <!-- Search -->
+                    <div class="relative hidden md:block">
+                        <button onclick="toggleSearch()" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                            <i class="fas fa-search text-lg"></i>
+                        </button>
+                        <div id="search-overlay" class="fixed inset-0 bg-black/50 z-50 hidden search-overlay">
+                            <div class="flex items-center justify-center min-h-screen p-4">
+                                <div class="bg-white rounded-xl p-6 w-full max-w-2xl">
+                                    <div class="flex items-center space-x-4">
+                                        <input type="text" id="search-input" placeholder="Search products..." data-translate-key="search_placeholder" class="flex-1 px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-luxe-amber focus:outline-none" onkeyup="searchProducts(event)">
+                                        <button onclick="toggleSearch()" class="text-stone-400 hover:text-stone-600">
+                                            <i class="fas fa-times text-xl"></i>
+                                        </button>
+                                    </div>
+                                    <div id="search-results" class="mt-4 max-h-64 overflow-y-auto">
+                                        <!-- Search results will appear here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wishlist -->
+                    <button class="hidden md:block text-luxe-stone hover:text-luxe-amber transition-colors relative" onclick="toggleWishlist()">
+                        <i class="fas fa-heart text-lg"></i>
+                        <span id="wishlist-count" class="absolute -top-2 -right-2 bg-luxe-amber text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                    </button>
+
+                    <!-- Cart -->
+                    <button class="hidden md:block text-luxe-stone hover:text-luxe-amber transition-colors relative" onclick="toggleCart()">
+                        <i class="fas fa-shopping-bag text-lg"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-luxe-amber text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-luxe-amber" data-translate-key="mobile_menu_title">Menu</h2>
+                <button id="mobile-menu-close" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <nav class="space-y-6">
+                <a href="index.html" class="block text-xl font-semibold text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_home">Home</a>
+                <a href="shop.html" class="block text-xl font-semibold text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_shop">Shop</a>
+                <a href="about.html" class="block text-xl font-semibold text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_about">About</a>
+                <a href="contact.html" class="block text-xl font-semibold text-luxe-stone hover:text-luxe-amber transition-colors" data-translate-key="nav_contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section - Modern Skincare -->
+    <section class="hero-bg py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in space-y-8">
+                    <div class="space-y-6">
+                        <div class="inline-flex items-center px-4 py-2 bg-sage-100 text-sage-800 rounded-full text-sm font-medium">
+                            <i class="fas fa-leaf mr-2"></i>
+                            <span data-translate-key="hero_badge">Dermatologist Approved</span>
+                        </div>
+                        <h1 class="heading-xl text-warm-800">
+                            <span data-translate-key="hero_title">Science Meets <span class="text-sage-600">Nature</span></span>
+                        </h1>
+                        <p class="text-lg text-warm-600 leading-relaxed max-w-lg">
+                            <span data-translate-key="hero_subtitle">Discover our premium skincare collection where cutting-edge science meets natural ingredients. Transform your daily routine into a luxurious self-care experience that delivers visible results.</span>
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="shop.html" class="group inline-flex items-center justify-center bg-sage-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-sage-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                            <span data-translate-key="hero_cta_shop">Shop Collection</span>
+                            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="about.html" class="inline-flex items-center justify-center border-2 border-sage-600 text-sage-600 px-8 py-4 rounded-xl font-semibold hover:bg-sage-600 hover:text-white transition-all duration-300">
+                            <span data-translate-key="hero_cta_about">Our Story</span>
+                            <i class="fas fa-heart ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="flex items-center space-x-8 pt-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-sage-600">10K+</div>
+                            <div class="text-sm text-warm-500">
+                                <span data-translate-key="trust_customers">Happy Customers</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-sage-600">4.9★</div>
+                            <div class="text-sm text-warm-500">
+                                <span data-translate-key="trust_rating">Average Rating</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-sage-600">100%</div>
+                            <div class="text-sm text-warm-500">
+                                <span data-translate-key="trust_cruelty_free">Cruelty Free</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Luxury Skincare Products Collection" 
+                             class="rounded-lg shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="heading-lg text-warm-800 mb-4">
+                    <span data-translate-key="section_why_choose_title">Why Choose LuxeGlow?</span>
+                </h2>
+                <p class="text-lg text-warm-600 max-w-3xl mx-auto">
+                    <span data-translate-key="section_why_choose_subtitle">We're committed to delivering the highest quality skincare products with science-backed ingredients and sustainable practices.</span>
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Trust Signal 1 -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto mb-4 group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                             alt="Quality Excellence - High-end skincare products" 
+                             class="w-full h-full object-cover rounded-full shadow-lg">
+                    </div>
+                    <h3 class="text-lg font-semibold text-warm-800 mb-2">
+                        <span data-translate-key="feature_quality_title">Quality Excellence</span>
+                    </h3>
+                    <p class="text-warm-600 text-sm">
+                        <span data-translate-key="feature_quality_desc">Premium skincare products with the highest quality ingredients</span>
+                    </p>
+                </div>
+                
+                <!-- Trust Signal 2 -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto mb-4 group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                             alt="Customer-Centric - Person using skincare" 
+                             class="w-full h-full object-cover rounded-full shadow-lg">
+                    </div>
+                    <h3 class="text-lg font-semibold text-warm-800 mb-2">
+                        <span data-translate-key="feature_customer_title">Customer-Centric</span>
+                    </h3>
+                    <p class="text-warm-600 text-sm">
+                        <span data-translate-key="feature_customer_desc">Designed with your skin's needs and satisfaction in mind</span>
+                    </p>
+                </div>
+                
+                <!-- Trust Signal 3 -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto mb-4 group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                             alt="Innovation - Modern lab and product research" 
+                             class="w-full h-full object-cover rounded-full shadow-lg">
+                    </div>
+                    <h3 class="text-lg font-semibold text-warm-800 mb-2">
+                        <span data-translate-key="feature_innovation_title">Innovation</span>
+                    </h3>
+                    <p class="text-warm-600 text-sm">
+                        <span data-translate-key="feature_innovation_desc">Cutting-edge research and advanced formulations</span>
+                    </p>
+                </div>
+                
+                <!-- Trust Signal 4 -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto mb-4 group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                             alt="Global Impact - Nature and sustainability" 
+                             class="w-full h-full object-cover rounded-full shadow-lg">
+                    </div>
+                    <h3 class="text-lg font-semibold text-warm-800 mb-2">
+                        <span data-translate-key="feature_impact_title">Global Impact</span>
+                    </h3>
+                    <p class="text-warm-600 text-sm">
+                        <span data-translate-key="feature_impact_desc">Sustainable practices and eco-friendly packaging</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bestsellers Section -->
+    <section class="py-20 bg-warm-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="heading-lg text-warm-800 mb-4">
+                    <span data-translate-key="section_bestsellers_title">Bestsellers</span>
+                </h2>
+                <p class="text-lg text-warm-600">
+                    <span data-translate-key="section_bestsellers_subtitle">Our most loved formulations, trusted by thousands</span>
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-hover bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer h-full flex flex-col" onclick="window.location.href='product.html'">
+                    <div class="relative group flex-shrink-0">
+                        <!-- Main Image -->
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Vitamin C Brightening Serum - Premium Skincare" 
+                             class="w-full h-64 object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110">
+                        
+                        <!-- Hover Image -->
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Vitamin C Brightening Serum - Premium Skincare" 
+                             class="w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-110">
+                        
+                        <!-- Wishlist Button -->
+                        <button class="wishlist-btn absolute top-4 left-4 bg-white/90 hover:bg-white rounded-full p-2 transition-all duration-300 hover:scale-110" onclick="event.stopPropagation(); toggleWishlistItem('vitamin-c-serum')">
+                            <i class="fas fa-heart text-gray-400 transition-colors duration-300"></i>
+                        </button>
+                        
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg mb-2 line-clamp-2 h-14 overflow-hidden">
+                                <span data-translate-key="product_1_title">Vitamin C Brightening Serum</span>
+                            </h3>
+                            <p class="text-stone-600 text-sm mb-4 line-clamp-2 h-10 overflow-hidden">
+                                <span data-translate-key="product_1_desc">Powerful antioxidant formula for radiant, even-toned skin</span>
+                            </p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-2xl font-bold text-luxe-amber">£89</span>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="event.stopPropagation(); addToCart('vitamin-c-serum', 'Vitamin C Brightening Serum', 89, 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')" 
+                                class="w-full bg-luxe-amber text-white py-2 rounded-lg hover:bg-amber-900 transition-colors mt-auto">
+                            <i class="fas fa-shopping-bag mr-2"></i>
+                            <span data-translate-key="btn_add_to_cart">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-hover bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer h-full flex flex-col" onclick="window.location.href='product.html'">
+                    <div class="relative group flex-shrink-0">
+                        <!-- Main Image -->
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Hyaluronic Acid Moisturizer" 
+                             class="w-full h-64 object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110">
+                        
+                        <!-- Hover Image -->
+                        <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Hyaluronic Acid Moisturizer" 
+                             class="w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-110">
+                        
+                        <!-- Wishlist Button -->
+                        <button class="wishlist-btn absolute top-4 left-4 bg-white/90 hover:bg-white rounded-full p-2 transition-all duration-300 hover:scale-110" onclick="event.stopPropagation(); toggleWishlistItem('hyaluronic-moisturizer')">
+                            <i class="fas fa-heart text-gray-400 transition-colors duration-300"></i>
+                        </button>
+                        
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg mb-2 line-clamp-2 h-14 overflow-hidden">Hyaluronic Acid Moisturizer</h3>
+                            <p class="text-stone-600 text-sm mb-4 line-clamp-2 h-10 overflow-hidden">Intensive hydration for plump, dewy skin</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-2xl font-bold text-luxe-amber">£75</span>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="event.stopPropagation(); addToCart('hyaluronic-moisturizer', 'Hyaluronic Acid Moisturizer', 75, 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')" 
+                                class="w-full bg-luxe-amber text-white py-2 rounded-lg hover:bg-amber-900 transition-colors mt-auto">
+                            <i class="fas fa-shopping-bag mr-2"></i>
+                            <span data-translate-key="btn_add_to_cart">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-hover bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer h-full flex flex-col" onclick="window.location.href='product.html'">
+                    <div class="relative group flex-shrink-0">
+                        <!-- Main Image -->
+                        <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Retinol Night Cream" 
+                             class="w-full h-64 object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110">
+                        
+                        <!-- Hover Image -->
+                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Retinol Night Cream" 
+                             class="w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-110">
+                        
+                        <!-- Wishlist Button -->
+                        <button class="wishlist-btn absolute top-4 left-4 bg-white/90 hover:bg-white rounded-full p-2 transition-all duration-300 hover:scale-110" onclick="event.stopPropagation(); toggleWishlistItem('retinol-cream')">
+                            <i class="fas fa-heart text-gray-400 transition-colors duration-300"></i>
+                        </button>
+                        
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg mb-2 line-clamp-2 h-14 overflow-hidden">Retinol Night Cream</h3>
+                            <p class="text-stone-600 text-sm mb-4 line-clamp-2 h-10 overflow-hidden">Advanced anti-aging treatment for smoother skin</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-2xl font-bold text-luxe-amber">£95</span>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="event.stopPropagation(); addToCart('retinol-cream', 'Retinol Night Cream', 95, 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')" 
+                                class="w-full bg-luxe-amber text-white py-2 rounded-lg hover:bg-amber-900 transition-colors mt-auto">
+                            <i class="fas fa-shopping-bag mr-2"></i>
+                            <span data-translate-key="btn_add_to_cart">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-hover bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer h-full flex flex-col" onclick="window.location.href='product.html'">
+                    <div class="relative group flex-shrink-0">
+                        <!-- Main Image -->
+                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Gentle Cleanser" 
+                             class="w-full h-64 object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110">
+                        
+                        <!-- Hover Image -->
+                        <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Gentle Cleanser" 
+                             class="w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-110">
+                        
+                        <!-- Wishlist Button -->
+                        <button class="wishlist-btn absolute top-4 left-4 bg-white/90 hover:bg-white rounded-full p-2 transition-all duration-300 hover:scale-110" onclick="event.stopPropagation(); toggleWishlistItem('gentle-cleanser')">
+                            <i class="fas fa-heart text-gray-400 transition-colors duration-300"></i>
+                        </button>
+                        
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg mb-2 line-clamp-2 h-14 overflow-hidden" data-translate-key="product_4_title">Gentle Foaming Cleanser</h3>
+                            <p class="text-stone-600 text-sm mb-4 line-clamp-2 h-10 overflow-hidden" data-translate-key="product_4_desc">Soothing daily cleanser for all skin types</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-2xl font-bold text-luxe-amber">£45</span>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="event.stopPropagation(); addToCart('gentle-cleanser', 'Gentle Foaming Cleanser', 45, 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')" 
+                                class="w-full bg-luxe-amber text-white py-2 rounded-lg hover:bg-amber-900 transition-colors mt-auto">
+                            <i class="fas fa-shopping-bag mr-2"></i>
+                            <span data-translate-key="btn_add_to_cart">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredient Focus Section -->
+    <section class="py-20 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-luxe-stone mb-4" data-translate-key="ingredients_section_title">Powerful Ingredients</h2>
+                <p class="text-stone-600 text-lg" data-translate-key="ingredients_section_subtitle">Discover the science behind our premium formulations</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-sun text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" data-translate-key="ingredient_vitamin_c_title">Vitamin C</h3>
+                    <p class="text-stone-600 text-sm" data-translate-key="ingredient_vitamin_c_desc">Powerful antioxidant that brightens skin and reduces dark spots</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tint text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" data-translate-key="ingredient_hyaluronic_title">Hyaluronic Acid</h3>
+                    <p class="text-stone-600 text-sm" data-translate-key="ingredient_hyaluronic_desc">Holds 1000x its weight in water for intense hydration</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-magic text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" data-translate-key="ingredient_retinol_title">Retinol</h3>
+                    <p class="text-stone-600 text-sm" data-translate-key="ingredient_retinol_desc">Gold standard anti-aging ingredient for smoother skin</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-leaf text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" data-translate-key="ingredient_natural_title">Natural Extracts</h3>
+                    <p class="text-stone-600 text-sm" data-translate-key="ingredient_natural_desc">Botanical extracts for gentle, effective skincare</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skincare Routine Guide Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-luxe-stone mb-4" data-translate-key="routine_section_title">Your Perfect Skincare Routine</h2>
+                <p class="text-stone-600 text-lg max-w-2xl mx-auto" data-translate-key="routine_section_subtitle">Follow our expert-recommended routine for healthy, glowing skin</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-luxe-amber/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-luxe-amber">1</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" data-translate-key="routine_step1_title">Cleanse</h3>
+                    <p class="text-stone-600 text-sm" data-translate-key="routine_step1_desc">Start with our gentle foaming cleanser to remove dirt and impurities</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-luxe-amber/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-luxe-amber">2</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" data-translate-key="routine_step2_title">Treat</h3>
+                    <p class="text-stone-600 text-sm" data-translate-key="routine_step2_desc">Apply your targeted treatment serum for specific skin concerns</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-luxe-amber/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-luxe-amber">3</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" data-translate-key="routine_step3_title">Moisturize</h3>
+                    <p class="text-stone-600 text-sm" data-translate-key="routine_step3_desc">Lock in hydration with our hyaluronic acid moisturizer</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-luxe-amber/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-luxe-amber">4</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" data-translate-key="routine_step4_title">Protect</h3>
+                    <p class="text-stone-600 text-sm" data-translate-key="routine_step4_desc">Finish with SPF protection to shield from harmful UV rays</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup with Enhanced Features -->
+    <section class="py-20 bg-gradient-to-br from-sage-600 to-sage-700 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="space-y-6">
+                <div class="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-medium">
+                    <i class="fas fa-gift mr-2"></i>
+                    <span data-translate-key="special_offer_badge">Special Offer</span>
+                </div>
+                <h2 class="heading-lg text-white" data-translate-key="special_offer_title">Get 10% Off Your First Order</h2>
+                <p class="text-lg text-sage-100 max-w-2xl mx-auto" data-translate-key="special_offer_subtitle">
+                    Join our community and receive exclusive skincare tips, early access to new products, and special discounts.
+                </p>
+                
+                <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" onsubmit="subscribeNewsletter(event)">
+                    <input type="email" 
+                           placeholder="Enter your email address" 
+                           data-translate-key="special_offer_email_placeholder"
+                           class="flex-1 px-6 py-4 rounded-xl border-0 focus:ring-2 focus:ring-white focus:outline-none text-warm-800 placeholder-warm-400"
+                           required>
+                    <button type="submit" 
+                            class="bg-white text-sage-700 px-8 py-4 rounded-xl font-semibold hover:bg-sage-50 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                        <span data-translate-key="special_offer_button">Get 10% Off</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </form>
+                
+                <div class="flex items-center justify-center space-x-8 text-sage-200 text-sm">
+                    <div class="flex items-center">
+                        <i class="fas fa-check mr-2"></i>
+                        <span data-translate-key="special_offer_subscribers">50,000+ subscribers</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        <span data-translate-key="special_offer_unsubscribe">Unsubscribe anytime</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-warm-100 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-luxe-amber mb-4">LuxeGlow</h3>
+                    <p class="text-stone-600 mb-4">
+                        <span class="en-content">Premium skincare for radiant, healthy skin. Crafted with love and the finest ingredients.</span>
+                        <span class="ar-content">منتجات عناية بالبشرة متميزة لبشرة مشرقة وصحية. مصنوعة بحب وأجود المكونات.</span>
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-stone-400 hover:text-luxe-amber transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-stone-400 hover:text-luxe-amber transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-stone-400 hover:text-luxe-amber transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">
+                        <span class="en-content">Quick Links</span>
+                        <span class="ar-content">روابط سريعة</span>
+                    </h4>
+                    <ul class="space-y-2">
+                        <li><a href="shop.html" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                            <span class="en-content">Shop</span>
+                            <span class="ar-content">المتجر</span>
+                        </a></li>
+                        <li><a href="about.html" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                            <span class="en-content">About</span>
+                            <span class="ar-content">من نحن</span>
+                        </a></li>
+                        <li><a href="contact.html" class="text-luxe-stone hover:text-luxe-amber transition-colors">
+                            <span class="en-content">Contact</span>
+                            <span class="ar-content">اتصل بنا</span>
+                        </a></li>
+                        <li><a href="#" class="text-stone-600 hover:text-luxe-amber transition-colors">
+                            <span class="en-content">Shipping</span>
+                            <span class="ar-content">الشحن</span>
+                        </a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">
+                        <span class="en-content">Customer Care</span>
+                        <span class="ar-content">خدمة العملاء</span>
+                    </h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-stone-600 hover:text-luxe-amber transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-stone-600 hover:text-luxe-amber transition-colors">Returns</a></li>
+                        <li><a href="#" class="text-stone-600 hover:text-luxe-amber transition-colors">Size Guide</a></li>
+                        <li><a href="#" class="text-stone-600 hover:text-luxe-amber transition-colors">Track Order</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">
+                        <span class="en-content">Contact Info</span>
+                        <span class="ar-content">معلومات التواصل</span>
+                    </h4>
+                    <ul class="space-y-2 text-stone-600">
+                        <li>📧 hello@luxeglow.com</li>
+                        <li>📞 +44 20 7123 4567</li>
+                        <li>📍 London, UK</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Payment Methods -->
+            <div class="border-t border-stone-200 mt-8 pt-8">
+                <div class="text-center mb-6">
+                    <h4 class="text-sm font-semibold text-stone-700 mb-4">We Accept</h4>
+                    <div class="flex justify-center items-center space-x-6">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 bg-blue-600 rounded text-white text-xs font-bold flex items-center justify-center">V</div>
+                            <span class="text-sm text-stone-600">Visa</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 bg-red-600 rounded text-white text-xs font-bold flex items-center justify-center">M</div>
+                            <span class="text-sm text-stone-600">Mastercard</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 bg-blue-500 rounded text-white text-xs font-bold flex items-center justify-center">A</div>
+                            <span class="text-sm text-stone-600">Amex</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 bg-yellow-500 rounded text-white text-xs font-bold flex items-center justify-center">P</div>
+                            <span class="text-sm text-stone-600">PayPal</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 bg-black rounded text-white text-xs font-bold flex items-center justify-center">🍎</div>
+                            <span class="text-sm text-stone-600">Apple Pay</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-stone-200 pt-8 text-center text-stone-600">
+                <p>&copy; 2024 LuxeGlow. All rights reserved. Demo owned by <a href="https://www.dacsoapp.com" target="_blank" class="text-luxe-amber hover:underline">dacsoapp.com</a></p>
+                <p class="text-xs mt-2 text-stone-500">This is a demonstration website for presentation purposes only. Not for commercial reproduction.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enhanced Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">
+                    <span class="en-content">Shopping Cart</span>
+                    <span class="ar-content">سلة التسوق</span>
+                </h2>
+                <button onclick="toggleCart()" class="text-stone-400 hover:text-stone-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="space-y-4 mb-6 max-h-96 overflow-y-auto">
+                <!-- Cart items will be populated here -->
+            </div>
+            <div class="border-t pt-4">
+                <div class="flex justify-between text-lg font-semibold mb-4">
+                    <span>
+                        <span class="en-content">Total:</span>
+                        <span class="ar-content">المجموع:</span>
+                    </span>
+                    <span id="cart-total">£0</span>
+                </div>
+                <a href="cart.html" class="block w-full bg-luxe-amber text-white text-center py-3 rounded-lg font-semibold hover:bg-amber-900 transition-colors mb-2">
+                    <span class="en-content">View Cart</span>
+                    <span class="ar-content">عرض السلة</span>
+                </a>
+                <button onclick="clearCart()" class="block w-full text-center py-2 text-stone-500 hover:text-red-500 transition-colors">
+                    <span class="en-content">Clear Cart</span>
+                    <span class="ar-content">مسح السلة</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Sidebar -->
+    <div id="wishlist-sidebar" class="fixed inset-y-0 right-0 w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">
+                    <span class="en-content">Wishlist</span>
+                    <span class="ar-content">قائمة الأمنيات</span>
+                </h2>
+                <button onclick="toggleWishlist()" class="text-stone-400 hover:text-stone-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="wishlist-items" class="space-y-4 mb-6 max-h-96 overflow-y-auto">
+                <!-- Wishlist items will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">
+                    <span class="en-content">Shopping Cart</span>
+                    <span class="ar-content">سلة التسوق</span>
+                </h2>
+                <button onclick="toggleCart()" class="text-stone-400 hover:text-stone-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="space-y-4 mb-6 max-h-96 overflow-y-auto">
+                <!-- Cart items will be populated here -->
+            </div>
+            <div class="border-t pt-4">
+                <div class="flex justify-between text-lg font-semibold mb-4">
+                    <span>
+                        <span class="en-content">Total:</span>
+                        <span class="ar-content">المجموع:</span>
+                    </span>
+                    <span id="cart-total">£0</span>
+                </div>
+                <a href="cart.html" class="block w-full bg-luxe-amber text-white text-center py-3 rounded-lg font-semibold hover:bg-amber-900 transition-colors mb-2">
+                    <span class="en-content">View Cart</span>
+                    <span class="ar-content">عرض السلة</span>
+                </a>
+                <button onclick="clearCart()" class="block w-full text-center py-2 text-stone-500 hover:text-red-500 transition-colors">
+                    <span class="en-content">Clear Cart</span>
+                    <span class="ar-content">مسح السلة</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Sidebar -->
+    <div id="wishlist-sidebar" class="fixed inset-y-0 right-0 w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">
+                    <span class="en-content">Wishlist</span>
+                    <span class="ar-content">قائمة الأمنيات</span>
+                </h2>
+                <button onclick="toggleWishlist()" class="text-stone-400 hover:text-stone-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="wishlist-items" class="space-y-4 mb-6 max-h-96 overflow-y-auto">
+                <!-- Wishlist items will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="toggleCart()"></div>
+    <div id="wishlist-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="toggleWishlist()"></div>
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="toggleMobileMenu()"></div>
+
+    <!-- Notification System -->
+    <div id="notification" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 notification" style="opacity: 0; transform: translateX(100%); transition: all 0.3s ease;">
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-check"></i>
+            <span id="notification-text">Item added to cart!</span>
+        </div>
+    </div>
+
+
+    <script>
+        /*
+        ========================================
+        COPYRIGHT AND LICENSING INFORMATION
+        ========================================
+        
+        © 2024 LuxeGlow E-commerce Demo Website
+        Owned by: dacsoapp.com
+        Website: www.dacsoapp.com
+        
+        This JavaScript code is proprietary and protected by copyright.
+        All functionality, logic, and implementation are owned by dacsoapp.com.
+        
+        For licensing inquiries: info@dacsoapp.com
+        ========================================
+        */
+        
+        // Enhanced Cart functionality using temp_js.js system
+
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+            // Use temp_js.js system
+            const cart = getCart();
+            const totalItems = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+
+            cartCount.textContent = totalItems;
+            cartCount.classList.toggle('hidden', totalItems === 0);
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-stone-500 text-center py-8">Your cart is empty</p>';
+                cartTotal.textContent = '£0';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="flex items-center space-x-3">
+                        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded">
+                        <div class="flex-1">
+                            <h4 class="font-medium text-sm">${item.name}</h4>
+                            <p class="text-stone-600 text-xs">Qty: ${item.qty || 1} × £${item.price}</p>
+                        </div>
+                        <button onclick="removeFromCart('${item.id}')" class="text-stone-400 hover:text-red-500">
+                            <i class="fas fa-trash text-xs"></i>
+                        </button>
+                    </div>
+                `).join('');
+
+                const total = cart.reduce((sum, item) => sum + (Number(item.price) * (item.qty || 1)), 0);
+                cartTotal.textContent = `£${total.toFixed(2)}`;
+            }
+        }
+
+        function updateWishlistDisplay() {
+            const wishlistCount = document.getElementById('wishlist-count');
+            const wishlistItems = document.getElementById('wishlist-items');
+
+            // Use temp_js.js system
+            const wishlist = getWishlist();
+
+            wishlistCount.textContent = wishlist.length;
+            wishlistCount.classList.toggle('hidden', wishlist.length === 0);
+
+            if (wishlist.length === 0) {
+                wishlistItems.innerHTML = '<p class="text-stone-500 text-center py-8">Your wishlist is empty</p>';
+            } else {
+                wishlistItems.innerHTML = wishlist.map(item => `
+                    <div class="flex items-center space-x-3">
+                        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded">
+                        <div class="flex-1">
+                            <h4 class="font-medium text-sm">${item.name}</h4>
+                            <p class="text-stone-600 text-xs">£${item.price}</p>
+                        </div>
+                        <button onclick="removeFromWishlist('${item.id}')" class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-trash text-xs"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+        
+        function addToCart(id, name, price, image) {
+            // Use temp_js.js system
+            const product = { id, name, price: Number(price), image };
+            window.addToCart(product);
+        }
+
+        function quickAddToCart(id, name, price, image) {
+            addToCart(id, name, price, image);
+        }
+
+        function removeFromCart(id) {
+            // Use temp_js.js system
+            window.removeFromCart(id);
+        }
+
+        function clearCart() {
+            // Use temp_js.js system
+            if (typeof setCart === 'function') {
+                setCart([]);
+            }
+            updateCartDisplay();
+            showNotification('notification_cart_cleared');
+        }
+
+        function toggleWishlistItem(id) {
+            const product = getProductById(id);
+            const currentWishlist = getWishlist();
+            const existingItem = currentWishlist.find(item => item.id === id);
+
+            if (existingItem) {
+                removeFromWishlist(id);
+                showNotification('notification_removed_from_wishlist');
+            } else {
+                window.addToWishlist(product);
+                showNotification('notification_added_to_wishlist');
+            }
+            updateWishlistHeartColors(); // Update heart colors after toggle
+        }
+
+        function removeFromWishlist(id) {
+            // Use temp_js.js system
+            window.removeFromWishlist(id);
+            updateWishlistDisplay();
+            showNotification('notification_item_removed_from_wishlist');
+            updateWishlistHeartColors(); // Update heart colors after removal
+        }
+
+        function getProductById(id) {
+            const products = [
+                { id: 'vitamin-c-serum', name: 'Vitamin C Brightening Serum', price: 89, image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' },
+                { id: 'hyaluronic-moisturizer', name: 'Hyaluronic Acid Moisturizer', price: 75, image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' },
+                { id: 'retinol-cream', name: 'Retinol Night Cream', price: 95, image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' },
+                { id: 'gentle-cleanser', name: 'Gentle Foaming Cleanser', price: 45, image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' }
+            ];
+            return products.find(p => p.id === id);
+        }
+        
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            sidebar.classList.toggle('translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        function toggleWishlist() {
+            const sidebar = document.getElementById('wishlist-sidebar');
+            const overlay = document.getElementById('wishlist-overlay');
+            sidebar.classList.toggle('translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        function updateWishlistHeartColors() {
+            // Update heart colors for all wishlist buttons using temp_js.js system
+            const wishlistButtons = document.querySelectorAll('.wishlist-btn i');
+            const currentWishlist = getWishlist();
+
+            wishlistButtons.forEach(button => {
+                const productId = button.closest('.wishlist-btn').onclick.toString().match(/toggleWishlistItem\('([^']+)'\)/);
+                if (productId) {
+                    const id = productId[1];
+                    const isInWishlist = currentWishlist.find(item => item.id === id);
+                    if (isInWishlist) {
+                        button.className = 'fas fa-heart text-red-500 transition-colors duration-300';
+                    } else {
+                        button.className = 'fas fa-heart text-gray-400 transition-colors duration-300';
+                    }
+                }
+            });
+        }
+
+        function toggleSearch() {
+            const overlay = document.getElementById('search-overlay');
+            overlay.classList.toggle('hidden');
+
+            if (!overlay.classList.contains('hidden')) {
+                document.getElementById('search-input').focus();
+            }
+        }
+
+        function searchProducts(event) {
+            const query = event.target.value.toLowerCase();
+            const results = document.getElementById('search-results');
+
+            if (query.length < 2) {
+                results.innerHTML = '';
+                return;
+            }
+
+            const products = [
+                { name: 'Vitamin C Brightening Serum', price: 89, image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' },
+                { name: 'Hyaluronic Acid Moisturizer', price: 75, image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' },
+                { name: 'Retinol Night Cream', price: 95, image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' },
+                { name: 'Gentle Foaming Cleanser', price: 45, image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' }
+            ];
+
+            const filteredResults = products.filter(product =>
+                product.name.toLowerCase().includes(query)
+            );
+
+            if (filteredResults.length === 0) {
+                results.innerHTML = '<p class="text-stone-500 text-center py-4">No products found</p>';
+                return;
+            }
+
+            results.innerHTML = filteredResults.map(product => `
+                <div class="flex items-center space-x-3 p-2 hover:bg-stone-50 rounded cursor-pointer" onclick="window.location.href='product.html'">
+                    <img src="${product.image}" alt="${product.name}" class="w-10 h-10 object-cover rounded">
+                    <div class="flex-1">
+                        <h4 class="font-medium">${product.name}</h4>
+                        <p class="text-stone-600 text-sm">£${product.price}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showNotification(messageKey) {
+            const notification = document.getElementById('notification');
+            const text = document.getElementById('notification-text');
+            
+            // Get current language
+            const currentLang = localStorage.getItem('selectedLanguage') || 'en';
+            
+            // Get translated message with fallback
+            let message = messageKey; // Default fallback
+            
+            // Try to get translation if languageContent is available
+            if (typeof languageContent !== 'undefined' && languageContent[currentLang] && languageContent[currentLang][messageKey]) {
+                message = languageContent[currentLang][messageKey];
+            } else {
+                // Fallback to hardcoded English messages if translations not loaded
+                const fallbackMessages = {
+                    'notification_added_to_cart': 'Item added to cart!',
+                    'notification_removed_from_cart': 'Item removed from cart!',
+                    'notification_cart_cleared': 'Cart cleared!',
+                    'notification_added_to_wishlist': 'Added to wishlist!',
+                    'notification_removed_from_wishlist': 'Removed from wishlist!',
+                    'notification_item_removed_from_wishlist': 'Item removed from wishlist!',
+                    'notification_invalid_email': 'Please enter a valid email address.',
+                    'notification_subscribed': 'Thank you for subscribing! You\'ll receive 10% off your first order.',
+                    'notification_already_in_wishlist': 'Item already in wishlist!'
+                };
+                message = fallbackMessages[messageKey] || messageKey;
+            }
+            
+            text.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+
+        function closePromoBanner() {
+            document.getElementById('promo-banner').style.display = 'none';
+        }
+
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const emailInput = event.target.querySelector('input[type="email"]');
+            const email = emailInput.value.trim();
+            
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showNotification('notification_invalid_email');
+                return;
+            }
+            
+            showNotification('notification_subscribed');
+            event.target.reset();
+        }
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('active');
+            }
+            if (overlay) {
+                overlay.classList.toggle('hidden');
+            }
+        }
+
+        // Initialize
+        updateCartDisplay();
+        updateWishlistDisplay();
+
+        // Mobile menu event listeners
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', toggleMobileMenu);
+        }
+    </script>
+    
+    <!-- Language Support Scripts -->
+    <script src="js/translations.js"></script>
+    <script src="js/language-switcher.js"></script>
+
+    <script src="temp_js.js"></script>
+
+    <script>
+        // Wait for temp_js.js to load before initializing
+        function waitForTempJS() {
+            if (typeof getCart === 'function' && typeof getWishlist === 'function') {
+                // Force cart and wishlist migration
+                if (typeof setCart === 'function' && typeof setWishlist === 'function') {
+                    setCart(getCart());
+                    setWishlist(getWishlist());
+                }
+
+                updateBadges();
+                updateCartDisplay();
+                updateWishlistDisplay();
+                updateWishlistHeartColors();
+
+                // Set up mobile menu event listeners here to ensure they work
+                const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+                }
+                if (mobileMenuClose) {
+                    mobileMenuClose.addEventListener('click', toggleMobileMenu);
+                }
+
+                // Listen for cart changes from other pages
+                window.addEventListener('storage', (e) => {
+                    if (e.key === 'cart' || e.key === 'wishlist') {
+                        updateBadges();
+                        updateCartDisplay();
+                        updateWishlistDisplay();
+                        updateWishlistHeartColors();
+                    }
+                });
+            } else {
+                setTimeout(waitForTempJS, 100);
+            }
+        }
+
+        // Start waiting for temp_js.js
+        document.addEventListener('DOMContentLoaded', waitForTempJS);
+    </script>
+</body>
+</html>

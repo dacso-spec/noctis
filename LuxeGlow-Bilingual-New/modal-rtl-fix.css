@@ -1,0 +1,118 @@
+/* ========================================
+   RTL Modal Fixes for Cart and Wishlist
+   ======================================== */
+
+/* Fix Cart and Wishlist Sidebar Position for RTL */
+html[dir='rtl'] #cart-sidebar,
+html[dir='rtl'] #wishlist-sidebar {
+    /* Move from right to left side */
+    right: auto;
+    left: 0;
+    
+    /* Change default transform to slide in from left */
+    transform: translateX(-100%);
+}
+
+/* When sidebars are open in RTL */
+html[dir='rtl'] #cart-sidebar:not(.translate-x-full),
+html[dir='rtl'] #wishlist-sidebar:not(.translate-x-full) {
+    transform: translateX(0);
+}
+
+/* Override Tailwind's translate-x-full class for RTL */
+html[dir='rtl'] #cart-sidebar.translate-x-full,
+html[dir='rtl'] #wishlist-sidebar.translate-x-full {
+    transform: translateX(-100%);
+}
+
+/* Fix the close button and header alignment */
+html[dir='rtl'] #cart-sidebar .flex.justify-between,
+html[dir='rtl'] #wishlist-sidebar .flex.justify-between {
+    flex-direction: row-reverse;
+}
+
+/* Adjust cart item layout for RTL */
+html[dir='rtl'] #cart-sidebar .cart-item,
+html[dir='rtl'] #wishlist-sidebar .wishlist-item {
+    flex-direction: row-reverse;
+}
+
+/* Fix cart item image positioning */
+html[dir='rtl'] #cart-sidebar .cart-item img,
+html[dir='rtl'] #wishlist-sidebar .wishlist-item img {
+    margin-left: 0;
+    margin-right: 1rem;
+}
+
+/* Fix quantity controls for RTL */
+html[dir='rtl'] #cart-sidebar .quantity-controls,
+html[dir='rtl'] #wishlist-sidebar .quantity-controls {
+    flex-direction: row-reverse;
+}
+
+/* Fix delete/remove button positioning */
+html[dir='rtl'] #cart-sidebar .remove-item,
+html[dir='rtl'] #wishlist-sidebar .remove-item {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Fix cart summary alignment */
+html[dir='rtl'] #cart-sidebar .cart-summary {
+    text-align: right;
+}
+
+/* Fix button group in cart footer */
+html[dir='rtl'] #cart-sidebar .cart-footer .flex,
+html[dir='rtl'] #wishlist-sidebar .wishlist-footer .flex {
+    flex-direction: row-reverse;
+}
+
+/* Fix any icons in RTL */
+html[dir='rtl'] #cart-sidebar .fas,
+html[dir='rtl'] #wishlist-sidebar .fas {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* Fix close button specifically */
+html[dir='rtl'] #cart-sidebar .fas.fa-times,
+html[dir='rtl'] #wishlist-sidebar .fas.fa-times {
+    margin: 0;
+}
+
+/* Fix any spacing issues with cart items */
+html[dir='rtl'] #cart-sidebar .space-y-4 > *,
+html[dir='rtl'] #wishlist-sidebar .space-y-4 > * {
+    text-align: right;
+}
+
+/* Ensure proper scrolling direction */
+html[dir='rtl'] #cart-sidebar .overflow-y-auto,
+html[dir='rtl'] #wishlist-sidebar .overflow-y-auto {
+    direction: rtl;
+}
+
+/* Fix price display to remain LTR */
+html[dir='rtl'] #cart-sidebar .price,
+html[dir='rtl'] #wishlist-sidebar .price {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Fix any cart badge positioning */
+html[dir='rtl'] .cart-badge {
+    right: auto;
+    left: -0.5rem;
+}
+
+html[dir='rtl'] .wishlist-count {
+    right: auto;
+    left: -0.5rem;
+}
+
+/* Fix overlay interaction */
+html[dir='rtl'] #cart-overlay {
+    /* Overlay styles remain the same, just ensure proper z-index */
+    z-index: 40;
+}
